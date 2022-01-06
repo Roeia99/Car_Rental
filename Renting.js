@@ -2,13 +2,13 @@ $(document).ready(function () {
     $("form").submit(function (event) {
         $(".help-block").remove();
         var formData = {
-            email: $("#email").val(),
-            password: $("#password").val(),
+            MinPrice: $("#MinPrice").val(),
+            MaxPrice: $("#MaxPrice").val(),
         };
         validate(formData);
         $.ajax({
             type: "POST",
-            url: "homepage.php",
+            url: "Renting.php",
             data: formData,
             dataType: "json",
             encode: true,
@@ -35,14 +35,11 @@ $(document).ready(function () {
 
 });
 
+//Check if prices are not Numbers
 function validate(formData){
     let valid = true;
-    if (formData["email"] === ''){
-        alert("Please Enter your Email");
-        valid = false;
-    }
-    if (formData["password"] === ''){
-        alert("Please Enter your Password");
+    if (isNaN(formData["MaxPrice"]) || isNaN(formData["MinPrice"])){
+        alert("Please Enter a valid Price");
         valid = false;
     }
     return valid

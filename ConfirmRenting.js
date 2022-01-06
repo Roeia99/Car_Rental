@@ -1,9 +1,5 @@
 $(document).ready(function () {
-    // Data Picker Initialization
-
-    // console.log(a);
     $("form").submit(function (event) {
-        $(".form-group").removeClass("has-error");
         $(".help-block").remove();
         var formData = {
             PickupDate: $("#PickupDate").val(),
@@ -11,7 +7,6 @@ $(document).ready(function () {
         };
         validatedate(formData["PickupDate"]);
         validatedate(formData["ReturnDate"]);
-        // validate(formData);
         $.ajax({
             type: "POST",
             url: "ConfirmRenting.php",
@@ -20,7 +15,17 @@ $(document).ready(function () {
             encode: true,
         }).done(function (data) {
             console.log(data);
+            if (!data.success) { // Error
 
+                if (data.errors.email) { // If email already exists
+                    $("#email-group").addClass("has-error");
+                    $("#email-group").append('<div class="help-block">' + data.errors.email + "</div>");
+                }
+
+            } else { // Success
+                $("form").html('<script></script>'+'<div class="alert alert-success">' + data.message + "</div>");
+                window.location.href = '/Registration_and_Login/Welcome_page.php';
+            }
         })
             .fail(function (data) {
                 // $("#message-group").html('<div class="alert alert-danger">Could not reach server, please try again later.</div>');
@@ -31,19 +36,7 @@ $(document).ready(function () {
 
 });
 
-function validate(formData){
-    let valid = true;
-    if (formData["PickupDate"] === ''){
-        alert("Please Enter the Pickup Date");
-        valid = false;
-    }
-    if (formData["ReturnDate"] === ''){
-        alert("Please Enter the Return Date");
-        valid = false;
-    }
-    return valid
-}
-
+//Check if the date is valid
 function validatedate(dateString){
     let dateformat = /^(0?[1-9]|1[0-2])[\/](0?[1-9]|[1-2][0-9]|3[01])[\/]\d{4}$/;
 
@@ -86,3 +79,4 @@ function validatedate(dateString){
     }
     return true;
 }
+

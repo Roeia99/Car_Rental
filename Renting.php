@@ -3,15 +3,9 @@
 $errors = [];
 $data = [];
 
-$email = $_POST['email'];
-$password = $_POST['password'];
+$MaxPrice = $_POST['MaxPrice'];
+$MinPrice = $_POST['MinPrice'];
 
-// Empty Validations
-if (empty($email) or empty($password)) {
-    $data['success'] = false;
-    echo json_encode($data);
-    return;
-}
 
 $connection = mysqli_connect('localhost','root','','registration');
 if (!$connection){ return; }
