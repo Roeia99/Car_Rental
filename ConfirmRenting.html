@@ -28,7 +28,7 @@
 <body>
 <div class="container">
     <div class="d-flex justify-content-center h-100">
-        <div class="card" style="width: 60rem;height: 35rem;">
+        <div class="card" style="width: 60rem;height: 25rem;">
             <div class="card-header">
                 <h3>Rent your Car</h3>
             </div>
@@ -41,43 +41,71 @@
                             <div class="card-header">
                                 <h3>Car Information</h3>
                             </div>
-
-                        </div>
-                        <!-- Additional needed Data Col-->
-                        <div class="col-sm-5">
-                            <div class="input-group form-group">
-                                <div class="form-group">
-                                    <div class="card-header">
-                                        <h3>Payment</h3>
-                                    </div>
-                                    <div class="mt-2 input-group form-group">
-                                        <input
-                                                id="PickupDate"
-                                                type="text"
-                                                class="form-control input-sm"
-                                                placeholder="day/month/year">
-                                        <input
-                                                id="ReturnDate"
-                                                type="text"
-                                                class="form-control input-sm"
-                                                placeholder="day/month/year">
-                                    </div>
-                                    <div class="mt-2 remember">
-                                        <label for="Pay Date" style="font-size: 24px">Pay Date:</label>
-                                    </div>
-                                    <div class="mt-2 remember">
-                                        <label for="Pickup Location"style="font-size: 24px">Pickup Location:</label>
-                                    </div>
-                                    <div class="mt-2 remember">
-                                        <label for="Total Price"style="font-size: 24px">Total Price:</label>
+                            <!--                            Information-->
+                            <div class="card text-white bg-primary mb-3"
+                                 style="width: 33rem;height: 15rem;overflow: auto;">
+                                <div class="card-body text-white">
+                                    <div class="container-fluid">
+                                        <table id="infoTable"
+                                               class="text-white table table-fixed table-condensed">
+                                            <thead>
+                                            <tr>
+                                                <th class="col-xs-3">Car ID</th>
+                                                <th class="col-xs-3">Model</th>
+                                                <th class="col-xs-6">Year</th>
+                                                <th class="col-xs-6">Color</th>
+                                            </tr>
+                                            </thead>
+                                            <tbody>
+                                            <tr class="clickableRow">
+                                                <td class="col-xs-3">John</td>
+                                                <td class="col-xs-3">43</td>
+                                                <td class="col-xs-6">School Teacher</td>
+                                                <td class="col-xs-6">$43,000</td>
+                                            </tr>
+                                            </tbody>
+                                        </table>
                                     </div>
                                 </div>
                             </div>
-                            <div class="mt-2 form-group">
-                                <input type="submit" value="Confirm" class="btn float-right login_btn">
-                            </div>
                         </div>
-                    </div>
+                                    <!-- Additional needed Data Col-->
+                                    <div class="col-sm-5">
+                                        <div class="input-group form-group">
+                                            <div class="form-group">
+                                                <div class="card-header">
+                                                    <h3>Payment</h3>
+                                                </div>
+                                                <div class="mt-2 input-group form-group">
+                                                    <input
+                                                            id="PickupDate"
+                                                            type="text"
+                                                            class="form-control input-sm"
+                                                            placeholder="day/month/year">
+                                                    <input
+                                                            id="ReturnDate"
+                                                            type="text"
+                                                            class="form-control input-sm"
+                                                            placeholder="day/month/year">
+                                                </div>
+                                                <div class="mt-2 remember">
+                                                    <label for="Pay Date" style="font-size: 24px">Pay Date:</label>
+                                                </div>
+                                                <div class="mt-2 remember">
+                                                    <label for="Pickup Location" style="font-size: 24px">Pickup
+                                                        Location:</label>
+                                                </div>
+                                                <div class="mt-2 remember">
+                                                    <label for="Total Price" style="font-size: 24px">Total
+                                                        Price:</label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="mt-2 form-group">
+                                            <input type="submit" value="Confirm and Check out" style="width: 250px" class="btn float-right login_btn">
+                                        </div>
+                                    </div>
+                                </div>
                 </form>
             </div>
         </div>

@@ -23,7 +23,7 @@ $(document).ready(function () {
 
             } else { // Success
                 $("form").html('<script></script>'+'<div class="alert alert-success">' + data.message + "</div>");
-                window.location.href = '/Registration_and_Login/Welcome_page.php';
+                window.location.href = 'ConfirmRenting.html';
             }
         })
             .fail(function (data) {
