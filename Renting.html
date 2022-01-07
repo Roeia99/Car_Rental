@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 
 <head>
     <title>Renting Page</title>
@@ -36,7 +36,7 @@
             </div>
             <div class="card-body">
                 <form action="Renting.php" method="POST">
-                    <div id="Droupdown-group" class="form-group">
+                    <div id="Dropdown-group" class="form-group">
                         <div class="row">
                             <!--Filters Col-->
                             <div class="col-sm-4">
@@ -44,61 +44,48 @@
                                     <h3>Filter by</h3>
                                 </div>
                                 <!-- Model Dropdown Box -->
-                                <div class="dropdown">
-                                    <button class="mt-2 btn btn-secondary btn-lg dropdown-toggle" type="button"
-                                            id="ModelButton" data-bs-toggle="dropdown" aria-haspopup="true"
-                                            aria-expanded="false">
-                                        Model
-                                    </button>
-                                    <span class="caret"></span></button>
-                                    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                                        <a class="dropdown-item" href="#">Action</a>
-                                        <a class="dropdown-item" href="#">Another action</a>
-                                        <a class="dropdown-item" href="#">Something else here</a>
-                                    </div>
+                                <div class="form-group">
+                                    <select class="custom-select mr-sm-2"
+                                            id="model-filter"
+                                            style="width: 18rem;">
+                                        <option selected>(Model)</option>
+                                        <option value="1">One</option>
+                                        <option value="2">Two</option>
+                                        <option value="3">Three</option>
+                                    </select>
                                 </div>
                                 <!-- Year Dropdown Box -->
-                                <div class="dropdown">
-                                    <button class="mt-2 btn btn-secondary btn-lg dropdown-toggle" type="button"
-                                            id="YearButton" data-bs-toggle="dropdown" aria-haspopup="true"
-                                            aria-expanded="false">
-                                        Year
-                                    </button>
-                                    .html($(this).html());
-                                    <span class="caret"></span></button>
-                                    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                                        <a class="dropdown-item" href="#" $(this).html()>Action</a>
-                                        <a class="dropdown-item" href="#">Another action</a>
-                                        <a class="dropdown-item" href="#">Something else here</a>
-                                    </div>
+                                <div class="form-group">
+                                    <select class="custom-select mr-sm-2"
+                                            id="year-filter"
+                                            style="width: 18rem;">
+                                        <option selected>(Year)</option>
+                                        <option value="1">One</option>
+                                        <option value="2">Two</option>
+                                        <option value="3">Three</option>
+                                    </select>
                                 </div>
                                 <!-- Color Dropdown Box -->
-                                <div id="Color-group" class="form-group">
-                                    <div class="dropdown">
-                                        <button class="mt-2 btn btn-secondary btn-lg dropdown-toggle" type="button"
-                                                id="ColorButton" data-bs-toggle="dropdown" aria-expanded="false">
-                                            Color
-                                        </button>
-                                        <span class="caret"></span></button>
-                                        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-                                            <a class="dropdown-item" href="#">Action</a>
-                                            <a class="dropdown-item" href="#">Another action</a>
-                                            <a class="dropdown-item" href="#">Something else here</a>
-                                        </div>
-                                    </div>
+                                <div class="form-group">
+                                    <select class="custom-select mr-sm-2"
+                                            id="color-filter"
+                                            style="width: 18rem;">
+                                        <option selected>(Color)</option>
+                                        <option value="1">One</option>
+                                        <option value="2">Two</option>
+                                        <option value="3">Three</option>
+                                    </select>
                                 </div>
                                 <!-- Country Dropdown Box -->
-                                <div class="dropdown">
-                                    <button class="mt-2 btn btn-secondary btn-lg dropdown-toggle" type="button"
-                                            id="CountryButton" data-bs-toggle="dropdown" aria-expanded="false">
-                                        Country
-                                    </button>
-                                    <span class="caret"></span></button>
-                                    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-                                        <a class="dropdown-item" href="#">Action</a>
-                                        <a class="dropdown-item" href="#">Another action</a>
-                                        <a class="dropdown-item" href="#">Something else here</a>
-                                    </div>
+                                <div class="form-group">
+                                    <select class="custom-select mr-sm-2"
+                                            id="country-filter"
+                                            style="width: 18rem;">
+                                        <option selected>(Country)</option>
+                                        <option value="1">One</option>
+                                        <option value="2">Two</option>
+                                        <option value="3">Three</option>
+                                    </select>
                                 </div>
                                 <!-- Price Range-->
                                 <div class="mt-2 row">

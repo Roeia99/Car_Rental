@@ -1,4 +1,10 @@
 $(document).ready(function () {
+    $("#color-l").click(function () {
+        var selText = $(this).text();
+        alert(selText);
+        $(this).parents('.btn-group').find('.dropdown-toggle').html(selText + ' <span class="caret"></span>');
+    });
+
     $("form").submit(function (event) {
         $(".help-block").remove();
         var formData = {
