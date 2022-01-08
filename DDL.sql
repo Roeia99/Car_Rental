@@ -22,7 +22,7 @@ CREATE TABLE Customer(
     city VARCHAR(20) NOT NULL,       --ADDRESS(street_name, city , country)
     country VARCHAR(20) NOT NULL,
     email VARCHAR(50) NOT NULL,
-    pass VARCHAR(20) NOT NULL,
+    password VARCHAR(20) NOT NULL,
     phone_no VARCHAR(20) NOT NULL
     );
 
