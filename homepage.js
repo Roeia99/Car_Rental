@@ -6,8 +6,7 @@ $(document).ready(function () {
             email: $("#email").val(),
             password: $("#password").val(),
         };
-        console.log(email);
-        console.log(password);
+        console.log(formData);
         validate(formData);
         $.ajax({
             type: "POST",
@@ -16,19 +15,19 @@ $(document).ready(function () {
             dataType: "json",
             encode: true,
         }).done(function (data) {
+            console.log(data);
             if (!data.success) { // Error
-
-                if (data.errors.email) { // If email already exists
-                    $("#email-group").addClass("has-error");
-                    $("#email-group").append('<div class="help-block">' + data.errors.email + "</div>");
-                }
-
+                // if (data.errors.email) { // If email already exists
+                //     $("#email-group").addClass("has-error");
+                //     $("#email-group").append('<div class="help-block">' + data.errors.email + "</div>");
+                // }
             } else { // Success
                 $("form").html('<script></script>'+'<div class="alert alert-success">' + data.message + "</div>");
                 window.location.href = '/Car_Rental/Renting.html';
             }
         })
             .fail(function (data) {
+                console.log("FAIL !")
                 // $("#message-group").html('<div class="alert alert-danger">Could not reach server, please try again later.</div>');
             });
         event.preventDefault();

@@ -1,4 +1,4 @@
-CREATE TABLE Car
+CREATE TABLE car
 (
     car_id      VARCHAR(10) PRIMARY KEY,
     model       VARCHAR(20) NOT NULL,
@@ -16,7 +16,7 @@ CREATE TABLE office
     city    VARCHAR(20) NOT NULL
 );
 
-CREATE TABLE Customer
+CREATE TABLE customer
 (
     customer_id INT PRIMARY KEY AUTO_INCREMENT,
     first_name  VARCHAR(20) NOT NULL,
@@ -29,7 +29,7 @@ CREATE TABLE Customer
     phone_no    VARCHAR(20) NOT NULL
 );
 
-CREATE Table Reservation
+CREATE Table reservation
 (
     res_id      int AUTO_INCREMENT,
     customer_id INT,
@@ -51,17 +51,17 @@ CREATE Table payment
     PRIMARY KEY (res_id, customer_id)
 );
 
-ALTER TABLE Car
+ALTER TABLE car
     ADD FOREIGN KEY (off_id) REFERENCES office (off_id);
 
-ALTER TABLE Reservation
-    ADD FOREIGN KEY (customer_id) REFERENCES Customer (customer_id);
+ALTER TABLE reservation
+    ADD FOREIGN KEY (customer_id) REFERENCES customer (customer_id);
 
-ALTER TABLE Reservation
-    ADD FOREIGN KEY (car_id) REFERENCES Car (car_id);
-
-ALTER TABLE payment
-    ADD FOREIGN KEY (res_id) REFERENCES Reservation (res_id);
+ALTER TABLE reservation
+    ADD FOREIGN KEY (car_id) REFERENCES car (car_id);
 
 ALTER TABLE payment
-    ADD FOREIGN KEY (customer_id) REFERENCES Customer (customer_id);
+    ADD FOREIGN KEY (res_id) REFERENCES reservation (res_id);
+
+ALTER TABLE payment
+    ADD FOREIGN KEY (customer_id) REFERENCES customer (customer_id);

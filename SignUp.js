@@ -13,6 +13,9 @@ $(document).ready(function () {
             city: $("#city").val(),
             country: $("#country").val(),
         };
+
+        console.log(formData);
+
         validate(formData);
         $.ajax({
                 type: "POST",
@@ -23,11 +26,13 @@ $(document).ready(function () {
             }).done(function (data) {
                 console.log(data);
                 if (!data.success) { // Error
+                    console.log("AAAAAAAAAAAAA");
+                    console.log(data);
 
-                    if (data.errors.email) { // If email already exists
-                        $("#email-group").addClass("has-error");
-                        $("#email-group").append('<div class="help-block">' + data.errors.email + "</div>");
-                    }
+                    // if (data.errors.email) { // If email already exists
+                    //     $("#email-group").addClass("has-error");
+                    //     $("#email-group").append('<div class="help-block">' + data.errors.email + "</div>");
+                    // }
 
                 } else { // Success
                     $("form").html('<script></script>'+'<div class="alert alert-success">' + data.message + "</div>");
