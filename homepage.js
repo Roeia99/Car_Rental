@@ -6,6 +6,8 @@ $(document).ready(function () {
             email: $("#email").val(),
             password: $("#password").val(),
         };
+        console.log(email);
+        console.log(password);
         validate(formData);
         $.ajax({
             type: "POST",
@@ -14,7 +16,6 @@ $(document).ready(function () {
             dataType: "json",
             encode: true,
         }).done(function (data) {
-            console.log(data);
             if (!data.success) { // Error
 
                 if (data.errors.email) { // If email already exists
@@ -24,7 +25,7 @@ $(document).ready(function () {
 
             } else { // Success
                 $("form").html('<script></script>'+'<div class="alert alert-success">' + data.message + "</div>");
-                window.location.href = '/Registration_and_Login/Welcome_page.php';
+                window.location.href = '/Car_Rental/Renting.html';
             }
         })
             .fail(function (data) {

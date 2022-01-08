@@ -13,25 +13,27 @@ if (empty($email) or empty($password)) {
     return;
 }
 
-$connection = mysqli_connect('localhost','root','','registration');
+$connection = mysqli_connect('localhost','root','','car_rental_system');
 if (!$connection){ return; }
 $password = md5($password);
-$query = mysqli_query($connection,"SELECT * FROM user WHERE email='".$email."' AND password='".$password."'");
+$query = mysqli_query($connection,"SELECT * FROM customer WHERE email='".$email."' AND password='".$password."'");
 $num_rows = mysqli_num_rows($query);
+
+
+
 if($num_rows!=0)
 {
     while($row=mysqli_fetch_assoc($query))
     {
-        $db_username = $row['name'];
         $db_email = $row['email'];
         $db_password = $row['password'];
     }
 
-    if($email == $db_email && $password == $db_password)
+    if($email == $db_email )
     {
         session_start();
-        $_SESSION['sess_user'] = $db_username;
         $data['success'] = true;
+        alert("Login success");
         $data['message'] = 'Login Successfully !';
     }else{
         $data['success'] = false;
