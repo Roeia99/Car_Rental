@@ -4,9 +4,10 @@ CREATE TABLE car
     model       VARCHAR(20) NOT NULL,
     year        INT         NOT NULL,
     color       VARCHAR(10) NOT NULL,
-    available   BOOLEAN     NOT NULL,
+    status      VARCHAR(50) NOT NULL,
     off_id      INT,
-    is_reserved BOOLEAN     NOT NULL
+    is_reserved BOOLEAN     NOT NULL,
+    price_per_day DECIMAL(10,2) NOT NULL
 );
 CREATE TABLE office
 (
@@ -24,44 +25,46 @@ CREATE TABLE customer
     Street_name VARCHAR(255) NOT NULL,
     city        VARCHAR(255) NOT NULL,
     country     VARCHAR(255) NOT NULL,
-    email       VARCHAR(255) NOT NULL,
+    email       VARCHAR(255) NOT NULL UNIQUE,
     `password`  VARCHAR(255) NOT NULL,
     phone_no    VARCHAR(255) NOT NULL
 );
 
 CREATE Table reservation
 (
-    res_id      int AUTO_INCREMENT,
+    res_id      int AUTO_INCREMENT UNIQUE,
     customer_id INT,
     car_id      VARCHAR(10),
-    res_date    DATE NOT NULL,
-    pick_date   DATE NOT NULL,
-    return_date DATE NOT NULL,
-    duration    INT,
+    res_date    DATETIME DEFAULT CURRENT_TIMESTAMP,
+    pick_date   DATETIME NOT NULL,
+    return_date DATETIME NOT NULL,
+    duration    INT AS (timestampdiff (day, pick_date, return_date)),
     PRIMARY KEY (res_id, customer_id, car_id)
 );
 
 CREATE Table payment
 (
-    res_id      INT,
-    customer_id INT,
-    total_pay   INT,
+    res_id      INT ,
     is_paid     BOOLEAN,
-    pay_date    DATE,
-    PRIMARY KEY (res_id, customer_id)
+    pay_date    DATETIME,
+    PRIMARY KEY (res_id)
 );
 
+CREATE VIEW customer_payment AS
+	SELECT p.* , (c.price_per_day * r.duration) total_pay
+	FROM car c NATURAL JOIN reservation r NATURAL JOIN payment p;
+
 ALTER TABLE car
-    ADD FOREIGN KEY (off_id) REFERENCES office (off_id);
+    ADD FOREIGN KEY (off_id) REFERENCES office (off_id) ON DELETE CASCADE ON UPDATE CASCADE;
 
 ALTER TABLE reservation
-    ADD FOREIGN KEY (customer_id) REFERENCES customer (customer_id);
+    ADD FOREIGN KEY (customer_id) REFERENCES customer (customer_id) ON DELETE CASCADE ON UPDATE CASCADE;
 
 ALTER TABLE reservation
-    ADD FOREIGN KEY (car_id) REFERENCES car (car_id);
+    ADD FOREIGN KEY (car_id) REFERENCES car (car_id) ON DELETE CASCADE ON UPDATE CASCADE;
 
 ALTER TABLE payment
-    ADD FOREIGN KEY (res_id) REFERENCES reservation (res_id);
+    ADD FOREIGN KEY (res_id) REFERENCES reservation (res_id) ON DELETE CASCADE ON UPDATE CASCADE;
 
 ALTER TABLE payment
-    ADD FOREIGN KEY (customer_id) REFERENCES customer (customer_id);
+    ADD FOREIGN KEY (customer_id) REFERENCES customer (customer_id) ON DELETE CASCADE ON UPDATE CASCADE;
