@@ -2,40 +2,29 @@
 
 $errors = [];
 $data = [];
-
+$i = 0;
 $MaxPrice = $_POST['MaxPrice'];
 $MinPrice = $_POST['MinPrice'];
 
-
-$connection = mysqli_connect('localhost','root','','registration');
+$connection = mysqli_connect('localhost','root','','course_regiseration');
 if (!$connection){ return; }
-$password = md5($password);
-$query = mysqli_query($connection,"SELECT * FROM user WHERE email='".$email."' AND password='".$password."'");
+$sql = "SELECT * FROM `enrolled`";
+
+$query = mysqli_query($connection,$sql);
 $num_rows = mysqli_num_rows($query);
+
 if($num_rows!=0)
 {
     while($row=mysqli_fetch_assoc($query))
     {
-        $db_username = $row['name'];
-        $db_email = $row['email'];
-        $db_password = $row['password'];
+        $response[$i]['id'] = $row['student_id'];
+        $response[$i]['cc'] = $row['course_code'];
+        $response[$i]['bb'] = $row['QUARTER'];
+        $response[$i]['dd'] = $row['year'];
+        $data[$i] = $response[$i];
+        $i +=1;
     }
-
-    if($email == $db_email && $password == $db_password)
-    {
-        session_start();
-        $_SESSION['sess_user'] = $db_username;
-        $data['success'] = true;
-        $data['message'] = 'Login Successfully !';
-    }else{
-        $data['success'] = false;
-        $errors['email'] = "Invalid Email or Password";
-        $data['errors'] = $errors;
-    }
-} else {
-    $data['success'] = false;
-    $errors['email'] = "Invalid Email or Password";
-    $data['errors'] = $errors;
+    session_start();
 }
 
 mysqli_close($connection);

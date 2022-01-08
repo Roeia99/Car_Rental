@@ -1,11 +1,9 @@
 $(document).ready(function () {
-    $("#color-l").click(function () {
-        var selText = $(this).text();
-        alert(selText);
-        $(this).parents('.btn-group').find('.dropdown-toggle').html(selText + ' <span class="caret"></span>');
+    $('#infoTable').on('click', 'tbody tr', function(event) {
+        $(this).addClass('highlight').siblings().removeClass('highlight');
     });
 
-    $("form").submit(function (event) {
+    $("#filter-form").submit(function (event) {
         $(".help-block").remove();
         var formData = {
             MinPrice: $("#MinPrice").val(),
@@ -20,17 +18,28 @@ $(document).ready(function () {
             encode: true,
         }).done(function (data) {
             console.log(data);
-            if (!data.success) { // Error
+            $('#infoTable').bootstrapTable({
 
-                if (data.errors.email) { // If email already exists
-                    $("#email-group").addClass("has-error");
-                    $("#email-group").append('<div class="help-block">' + data.errors.email + "</div>");
-                }
-
-            } else { // Success
-                $("form").html('<script></script>'+'<div class="alert alert-success">' + data.message + "</div>");
-                window.location.href = 'ConfirmRenting.html';
-            }
+                pagination: true,
+                striped: true,
+                pageSize: 10,
+                clickToSelect: true,
+                columns: [{
+                    field: 'id',
+                    title: 'Item ID',
+                    sortable : true
+                }, {
+                    field: 'cc',
+                    title: 'Course Name'
+                }, {
+                    field: 'bb',
+                    title: 'QUARTER'
+                }, {
+                    field: 'dd',
+                    title: 'year'
+                }],
+                data: data
+            });
         })
             .fail(function (data) {
                 // $("#message-group").html('<div class="alert alert-danger">Could not reach server, please try again later.</div>');
@@ -42,9 +51,9 @@ $(document).ready(function () {
 });
 
 //Check if prices are not Numbers
-function validate(formData){
+function validate(formData) {
     let valid = true;
-    if (isNaN(formData["MaxPrice"]) || isNaN(formData["MinPrice"])){
+    if (isNaN(formData["MaxPrice"]) || isNaN(formData["MinPrice"])) {
         alert("Please Enter a valid Price");
         valid = false;
     }
