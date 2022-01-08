@@ -30,7 +30,7 @@ $data['success'] = $num_rows == 0;
 
 if ($num_rows == 0){
 
-    $sql = "INSERT INTO customer(first_name,last_name, Street_name,city,country, email, pass, phone_no) VALUES('".$Fname."', '".$Lname."','".$street."','" . $city . "','" . $country . "','" . $email . "','" . md5($password) . "','" . $phone . "')";
+    $sql = "INSERT INTO customer(first_name,last_name, Street_name,city,country, email, password, phone_no) VALUES('".$Fname."', '".$Lname."','".$street."','" . $city . "','" . $country . "','" . $email . "','" . md5($password) . "','" . $phone . "')";
         $result = mysqli_query($connection, $sql);
         if ($result) {
             session_start();
