@@ -29,6 +29,11 @@ html,body{
     color: white;
 }
 
+.card-header h4{
+    color: white;
+    font-size: 19px;
+}
+
 .social_icon{
     position: absolute;
     right: 20px;
