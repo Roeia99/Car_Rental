@@ -50,10 +50,16 @@
                                     <select class="custom-select mr-sm-2"
                                             id="model-filter"
                                             style="width: 18rem;">
-                                        <option selected value="">(Model)</option>
-                                        <option value="1">One</option>
-                                        <option value="2">Two</option>
-                                        <option value="3">Three</option>
+                                        <option selected>(Model)</option>
+                                        <?php
+                                        $connection = mysqli_connect('localhost', 'root', '', 'car_rental_system');
+                                        $sql = "SELECT distinct c.model model FROM `car` c ";
+                                        $query = mysqli_query($connection, $sql);
+                                        while ($row = mysqli_fetch_assoc($query)) {
+                                            echo "<option> $row[model] </option>";
+                                        }
+                                        mysqli_close($connection);
+                                        ?>
                                     </select>
                                 </div>
                                 <!-- Year Dropdown Box -->
@@ -61,13 +67,13 @@
                                     <select class="custom-select mr-sm-2"
                                             id="year-filter"
                                             style="width: 18rem;">
-                                        <option selected value="">(Year)</option>
+                                        <option selected>(Year)</option>
                                         <?php
-                                        $connection = mysqli_connect('localhost', 'root', '', 'course_regiseration');
-                                        $sql = "SELECT * FROM `enrolled`";
+                                        $connection = mysqli_connect('localhost', 'root', '', 'car_rental_system');
+                                        $sql = "SELECT distinct c.year `year` FROM `car` c ";
                                         $query = mysqli_query($connection, $sql);
                                         while ($row = mysqli_fetch_assoc($query)) {
-                                            echo "<option> $row[student_id] </option>";
+                                            echo "<option> $row[year] </option>";
                                         }
                                         mysqli_close($connection);
                                         ?>
@@ -78,10 +84,16 @@
                                     <select class="custom-select mr-sm-2"
                                             id="color-filter"
                                             style="width: 18rem;">
-                                        <option selected value="">(Color)</option>
-                                        <option value="1">One</option>
-                                        <option value="2">Two</option>
-                                        <option value="3">Three</option>
+                                        <option selected>(Color)</option>
+                                        <?php
+                                        $connection = mysqli_connect('localhost', 'root', '', 'car_rental_system');
+                                        $sql = "SELECT distinct c.color `color` FROM `car` c ";
+                                        $query = mysqli_query($connection, $sql);
+                                        while ($row = mysqli_fetch_assoc($query)) {
+                                            echo "<option> $row[color] </option>";
+                                        }
+                                        mysqli_close($connection);
+                                        ?>
                                     </select>
                                 </div>
                                 <!-- Country Dropdown Box -->
@@ -89,10 +101,16 @@
                                     <select class="custom-select mr-sm-2"
                                             id="country-filter"
                                             style="width: 18rem;">
-                                        <option selected value="">(Country)</option>
-                                        <option value="1">One</option>
-                                        <option value="2">Two</option>
-                                        <option value="3">Three</option>
+                                        <option selected>(Country)</option>
+                                        <?php
+                                        $connection = mysqli_connect('localhost', 'root', '', 'car_rental_system');
+                                        $sql = "SELECT distinct o.country `country` FROM `car` c NATURAL JOIN office o";
+                                        $query = mysqli_query($connection, $sql);
+                                        while ($row = mysqli_fetch_assoc($query)) {
+                                            echo "<option> $row[country] </option>";
+                                        }
+                                        mysqli_close($connection);
+                                        ?>
                                     </select>
                                 </div>
                                 <!-- Price Range-->
@@ -112,6 +130,36 @@
                                         </div>
                                     </div>
                                 </div>
+                                <!-- Reservation Period-->
+                                <div class="row">
+                                    <div class="mt-2 remember">
+                                        <label for="ReservationDate" style="font-size: 17px">
+                                            Reservation Date:</label>
+                                    </div>
+                                    <!-- Start Date-->
+                                    <div class="col">
+                                        <div class="input-group form-group" style="width: 8rem;">
+                                            <input
+                                                    id="StartDate"
+                                                    type="text"
+                                                    class="form-control input-sm"
+                                                    placeholder="Start date">
+                                        </div>
+                                    </div>
+                                    <!--End Date-->
+                                    <div class="col">
+                                        <div class="input-group form-group" style="width: 8rem;">
+                                            <input id="EndDate"
+                                                   type="text"
+                                                   class="form-control"
+                                                   placeholder="End date">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="input-group form-group">
+                                    <input id="plate-id" type="text" class="form-control input-sm"
+                                           placeholder="Plate ID">
+                                </div>
                                 <div class="mt-2 form-group">
                                     <input type="submit" value="Filter" class="btn float-right login_btn">
                                 </div>
@@ -126,7 +174,7 @@
                                                     data-click-to-select="true"
                                                     data-search="true"
                                                     id="infoTable"
-                                                   class="text-white table table-fixed table-condensed">
+                                                    class="text-white table table-fixed table-condensed">
                                                 <thead>
                                                 <tr>
                                                     <th class="col-xs-3">car ID</th>
@@ -139,15 +187,17 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="mt-2 form-group">
-                                    <input
-                                            id="continue-btn"
-                                            type="submit"
-                                           value="Continue"
-                                           class="btn pull-right login_btn">
-                                </div>
                             </div>
                         </div>
+                    </div>
+                </form>
+                <form id="continue-form" action="startReservationSession.php" method="POST">
+                    <div class="mt-2 form-group">
+                        <input
+                                type="submit"
+                                id="continue-btn"
+                                value="Continue"
+                                class="btn pull-right login_btn">
                     </div>
                 </form>
             </div>
