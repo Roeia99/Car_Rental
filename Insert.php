@@ -17,6 +17,7 @@ if (empty($CarID) or empty($Model)
     or empty($Status) or empty($Office)
     or empty($PricePerDay)) {
     $data['success'] = false;
+    alert("Something is missing");
     echo json_encode($data);
     return;
 }
@@ -28,6 +29,7 @@ if (!$connection) {
 
 $query = mysqli_query($connection, "SELECT * FROM car WHERE car_id ='" . $CarID . "'");
 $num_rows = mysqli_num_rows($query);
+// console.log($num_rows);
 $data['success'] = $num_rows == 0;
 
 if ($num_rows == 0) {
@@ -44,6 +46,7 @@ if ($num_rows == 0) {
                                 '" . $CarID . "',
                                 '" . $Model . "',
                                 '" . $Year . "',
+                                '" . $Color . "',
                                 '" . $Status . "',
                                 '" . $Office . "',
                                      'false',
@@ -59,6 +62,9 @@ if ($num_rows == 0) {
         $data['success'] = false;
         $data['message'] = 'ERROR Inserting to table !';
         }
+    }else{
+    $data['success'] = false;
+    $data['message'] = 'This Car is already in the system';
     }
 
 
