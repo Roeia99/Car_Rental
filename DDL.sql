@@ -1,5 +1,4 @@
 CREATE DATABASE car_rental_system;
-
 CREATE TABLE car
 (
     car_id      VARCHAR(10) PRIMARY KEY,
@@ -8,10 +7,9 @@ CREATE TABLE car
     color       VARCHAR(10) NOT NULL,
     status      VARCHAR(50) NOT NULL,
     off_id      INT,
-    is_reserved BOOLEAN     NOT NULL,
+    is_reserved BOOLEAN     DEFAULT false,
     price_per_day DECIMAL(10,2) NOT NULL
 );
-
 CREATE TABLE office
 (
     off_id  INT PRIMARY KEY,

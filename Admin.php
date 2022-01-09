@@ -29,7 +29,7 @@
 <body>
 <div class="container">
     <div class="d-flex justify-content-center h-100">
-        <div class="card" style="width: 80rem;height: 43rem;">
+        <div class="card" style="width: 80rem;height: 44rem;">
             <!-- Header -->
             <div class="card-header">
                 <h3>Admin</h3>
@@ -61,9 +61,15 @@
                                             id="model-filter"
                                             style="width: 18rem;">
                                         <option selected>(Model)</option>
-                                        <option value="1">One</option>
-                                        <option value="2">Two</option>
-                                        <option value="3">Three</option>
+                                        <?php
+                                        $connection = mysqli_connect('localhost', 'root', '', 'car_rental_system');
+                                        $sql = "SELECT distinct c.model model FROM `car` c ";
+                                        $query = mysqli_query($connection, $sql);
+                                        while ($row = mysqli_fetch_assoc($query)) {
+                                            echo "<option> $row[model] </option>";
+                                        }
+                                        mysqli_close($connection);
+                                        ?>
                                     </select>
                                 </div>
                                 <!-- Year Dropdown Box -->
@@ -72,9 +78,15 @@
                                             id="year-filter"
                                             style="width: 18rem;">
                                         <option selected>(Year)</option>
-                                        <option value="1">One</option>
-                                        <option value="2">Two</option>
-                                        <option value="3">Three</option>
+                                        <?php
+                                        $connection = mysqli_connect('localhost', 'root', '', 'car_rental_system');
+                                        $sql = "SELECT distinct c.year `year` FROM `car` c ";
+                                        $query = mysqli_query($connection, $sql);
+                                        while ($row = mysqli_fetch_assoc($query)) {
+                                            echo "<option> $row[year] </option>";
+                                        }
+                                        mysqli_close($connection);
+                                        ?>
                                     </select>
                                 </div>
                                 <!-- Color Dropdown Box -->
@@ -83,9 +95,15 @@
                                             id="color-filter"
                                             style="width: 18rem;">
                                         <option selected>(Color)</option>
-                                        <option value="1">One</option>
-                                        <option value="2">Two</option>
-                                        <option value="3">Three</option>
+                                        <?php
+                                        $connection = mysqli_connect('localhost', 'root', '', 'car_rental_system');
+                                        $sql = "SELECT distinct c.color `color` FROM `car` c ";
+                                        $query = mysqli_query($connection, $sql);
+                                        while ($row = mysqli_fetch_assoc($query)) {
+                                            echo "<option> $row[color] </option>";
+                                        }
+                                        mysqli_close($connection);
+                                        ?>
                                     </select>
                                 </div>
                                 <!-- Country Dropdown Box -->
@@ -94,9 +112,25 @@
                                             id="country-filter"
                                             style="width: 18rem;">
                                         <option selected>(Country)</option>
-                                        <option value="1">One</option>
-                                        <option value="2">Two</option>
-                                        <option value="3">Three</option>
+                                              <?php
+                                        $connection = mysqli_connect('localhost', 'root', '', 'car_rental_system');
+                                        $sql = "SELECT distinct o.country `country` FROM `car` c NATURAL JOIN office o";
+                                        $query = mysqli_query($connection, $sql);
+                                        while ($row = mysqli_fetch_assoc($query)) {
+                                            echo "<option> $row[country] </option>";
+                                        }
+                                        mysqli_close($connection);
+                                        ?>
+                                    </select>
+                                </div>
+								 <!-- status Dropdown Box -->
+                                <div class="form-group">
+                                    <select class="custom-select mr-sm-2"
+                                            id="status-filter"
+                                            style="width: 18rem;">
+                                        <option selected>(status)</option>
+										<option	value ="1">active</option> 
+										<option	value ="2">out of service</option> 
                                     </select>
                                 </div>
                                 <!-- Reservation Period-->
@@ -206,6 +240,17 @@
         </div>
     </div>
 </div>
-</body>
+<?php
 
+$plate_id = $_POST['CarID'];
+$startdate = $_POST['StartDate'];
+$enddate = $_POST ['EndDate'];
+$fname = $_POST ['Fname'];
+$lname = $_POST ['Lname'];
+$email = $_POST ['email'];
+$statedate = $_POST ['StateDate'];
+
+
+?>
+</body>
 </html>
