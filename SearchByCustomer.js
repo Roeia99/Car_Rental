@@ -20,6 +20,7 @@ $(document).ready(function () {
             // country: $("#country").val(),
         };
 
+        console.log(formData);
         $.ajax({
             type: "POST",
             url: 'SearchByCustomer.php',
@@ -28,7 +29,7 @@ $(document).ready(function () {
             encode: true,
         })
             .done(function (data) {
-                // console.log(data);
+                console.log(data);
                 $('#infoTable').bootstrapTable({
                     toggle: true,
                     pagination: true,
@@ -62,7 +63,8 @@ $(document).ready(function () {
                     data: data
                 });
             })
-            .fail(function (data) {
+            .fail(function (jqXHR, exception) {
+                console.log("Fail");
                 // Our error logic here
                 var msg = '';
                 if (jqXHR.status === 0) {

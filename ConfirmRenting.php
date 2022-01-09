@@ -49,25 +49,18 @@
                                     <div class="container-fluid">
                                         <?php
 
-                                        function console_log($output, $with_script_tags = true)
-                                        {
-                                            $js_code = 'console.log(' . json_encode($output, JSON_HEX_TAG) . ');';
-                                            if ($with_script_tags) {
-                                                $js_code = '<script>' . $js_code . '</script>';
-                                            }
-                                            echo $js_code;
-                                        }
+//                                        function console_log($output, $with_script_tags = true)
+//                                        {
+//                                            $js_code = 'console.log(' . json_encode($output, JSON_HEX_TAG) . ');';
+//                                            if ($with_script_tags) {
+//                                                $js_code = '<script>' . $js_code . '</script>';
+//                                            }
+//                                            echo $js_code;
+//                                        }
 
                                         session_start();
 
-                                        console_log("Logging in !");
-                                        console_log($_SESSION);
-                                        console_log($_POST);
-                                        console_log($_GET);
-
-
-                                        $errors = [];
-                                        $data = [];
+//                                        console_log($_SESSION);
 
                                         $PickupDate = $_SESSION['PickupDate'];
                                         $ReturnDate = $_SESSION['ReturnDate'];
