@@ -26,7 +26,7 @@ $(document).ready(function () {
             }
 			if(data.customer) { // Success
                 $("form").html('<script></script>'+'<div class="alert alert-success">' + data.message + "</div>");
-                window.location.href = '/Car_Rental/Renting.html';
+                window.location.href = 'Renting.php';
             }
         })
             .fail(function (data) {
