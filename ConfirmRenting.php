@@ -112,40 +112,41 @@
                                     </div>
                                 </div>
                             </div>
-                            <!-- Additional needed Data Col-->
-                            <div class="col-sm-5">
-                                <div class="input-group form-group">
-                                    <div class="form-group">
-                                        <div class="card-header">
-                                            <h3>Payment details</h3>
-                                        </div>
-                                        <div class="mt-2 remember">
-                                            <span style="padding-right: 7em">Pick date</span>Return date
-                                        </div>
-                                        <div class="mt-2 input-group form-group">
-                                            <!-- to do put the pickup and return -->
-                                            <?php
-                                            // $PickupDate = $_SESSION['PickupDate'];
+                        </div>
+                        <!-- Additional needed Data Col-->
+                        <div class="col-sm-5">
+                            <div class="input-group form-group">
+                                <div class="form-group">
+                                    <div class="card-header">
+                                        <h3>Payment details</h3>
+                                    </div>
+                                    <div class="mt-2 remember">
+                                        <span style="padding-right: 7em">Pick date</span>Return date
+                                    </div>
+                                    <div class="mt-2 input-group form-group">
+                                        <!-- to do put the pickup and return -->
+                                        <?php
+                                        $PickupDate = $_SESSION['PickupDate'];
+                                        $ReturnDate = $_SESSION['ReturnDate'];
+                                        echo " <div class=\"mt-2 remember\">
+                                        <span style=\"padding-right: 7em\">
+                                        " . $PickupDate . "
+                                        </span>" . $ReturnDate . "
+                                        </div>";
+                                        ?>
+                                    </div>
 
-                                            // $ReturnDate = $_SESSION['ReturnDate']; 
-                                            echo"<label id=\"model\" style=\"font-size: 22px\">00/00/00</label>
-                                                    </div>";
-                                            echo"<label id=\"model\" style=\"font-size: 22px\">00/00/00</label>
-                                                    </div>";
+                                    <div class="mt-2 remember">
+                                        <label style="font-size: 22px">Pay Date:</label>
+                                        <label id="Pay_Date"
+                                               style="font-size: 22px">Pay
+                                            Date:</label>
+                                    </div>
 
-                                            ?>
-                                        </div>
-                                        
-                                        <div class="mt-2 remember">
-                                            <label style="font-size: 22px">Pay Date:</label> <label id="Pay_Date"
-                                                style="font-size: 22px">Pay Date:</label>
-                                        </div>
-
-                                        <div class="mt-2 remember">
-                                            <label style="font-size: 22px">Total
-                                                Price:</label><label id="Total_Price" style="font-size: 22px">Total
-                                                Price:</label>
-                                        </div>
+                                    <div class="mt-2 remember">
+                                        <label style="font-size: 22px">Total
+                                            Price:</label><label id="Total_Price" style="font-size: 22px">Total
+                                            Price:</label>
                                     </div>
                                 </div>
                             </div>
@@ -155,8 +156,8 @@
                             </div>
                         </div>
                     </div>
-                </form>
             </div>
+            </form>
             <div class="card-footer">
                 <div class="d-flex  justify-content-left links">
                     <a href="homepage.html">Sign Out</a>
@@ -166,8 +167,6 @@
     </div>
 </div>
 </body>
-
-</html>
 
 </html>
 
