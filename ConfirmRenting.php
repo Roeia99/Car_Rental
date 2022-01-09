@@ -13,18 +13,18 @@ $query = mysqli_query($connection,"SELECT * FROM car  NATURAL JOIN office WHERE 
 $num_rows = mysqli_num_rows($query);
 if($num_rows!=0)
 {
-    while($row=mysqli_fetch_assoc($query))
-    {
-        // $data['model'] = $row['model'];
-        // $data['year'] = $row['year'];
-        // $data['color'] = $row['color'];
-        // $data['price'] = $row['price_per_day']
-        // $data['officeName'] = $row['name'];
-        // $data['officeCountry'] = $row['country'];
-        // $data['officeCity'] = $row['city'];
+    $row=mysqli_fetch_assoc($query)
+
+    $data['model'] = $row['model'];
+    $data['year'] = $row['year'];
+    $data['color'] = $row['color'];
+    $data['price'] = $row['price_per_day']
+    $data['officeName'] = $row['name'];
+    $data['officeCountry'] = $row['country'];
+    $data['officeCity'] = $row['city'];
        
         
-    }
+
 }
 }
 
