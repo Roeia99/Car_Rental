@@ -1,13 +1,12 @@
 <?php
 $errors = [];
 $data = [];
+// $PickupDate = $_POST['PickupDate'];
+// $ReturnDate = $_POST['ReturnDate'];
 
-$PickupDate = $_POST['PickupDate'];
-$ReturnDate = $_POST['ReturnDate'];
 // $carId = $_SESSION['carId'];
+$data ['ss'] = "mohamed"; 
 
-$carId = 'mm111';
-$data['ss']="hereeeee";
 $connection = mysqli_connect('localhost','root','','car_rental_system');
 if (!$connection){ return; }
 $query = mysqli_query($connection,"SELECT * FROM car  NATURAL JOIN office WHERE car_id='".$carId."'");
@@ -31,3 +30,4 @@ if($num_rows!=0)
 
 mysqli_close($connection);
 echo json_encode($data);
+// echo json_decode()

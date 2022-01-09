@@ -3,15 +3,12 @@ $(document).ready(function () {
         PickupDate: $("#PickupDate").val(),
         ReturnDate: $("#ReturnDate").val(),
     };
-    var y = document.getElementById("model");
-        y.innerHTML = "7mada ana hena";
     $.ajax({
-        type: "GET",
+        type: "POST",
         url: "ConfirmRenting.php",
         dataType: "json",
         encode: true,
     }).done(function (data) {
-        console.log("7madaaaaaaaa");
         console.log(data);
     }) .fail(function(data) {
         alert( data );
