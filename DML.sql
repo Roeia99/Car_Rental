@@ -10,8 +10,8 @@ INSERT INTO office(off_id,name,country,city) VALUES ('5','louza','egypt','alex')
 INSERT INTO car (car_id,model,`year`,color,`status`,off_id,price_per_day) VALUES ('ABCD','Cherry121',2015,'Dark Blue','active',5,1000);
 INSERT INTO car (car_id,model,`year`,color,`status`,off_id,price_per_day) VALUES ('HELLO','Toyota',2018,'Black','active',1,1500);
 
-INSERT INTO reservation(res_id,customer_id,car_id,pick_date,return_date)VALUES('1','2','1','2022-1-1','2022-1-2');
-INSERT INTO payment(res_id,is_paid,pay_date)VALUES('1','true','2022-1-1');
+INSERT INTO reservation(res_id,customer_id,car_id,pick_date,return_date)VALUES('1','2','ABCD','2022-1-1','2022-1-2');
+INSERT INTO payment(res_id,is_paid,pay_date)VALUES('1',true,'2022-1-1');
 
-INSERT INTO reservation(res_id,customer_id,car_id,pick_date,return_date)VALUES('2','2','11','2022-1-1','2022-1-1');
-INSERT INTO payment(res_id,is_paid,pay_date)VALUES('2','true','2022-1-2');
+INSERT INTO reservation(res_id,customer_id,car_id,pick_date,return_date)VALUES('2','2','HELLO','2022-1-1','2022-1-1');
+INSERT INTO payment(res_id,is_paid,pay_date)VALUES('2',true,'2022-1-2');
