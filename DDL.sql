@@ -65,6 +65,3 @@ ALTER TABLE reservation
 
 ALTER TABLE payment
     ADD FOREIGN KEY (res_id) REFERENCES reservation (res_id) ON DELETE CASCADE ON UPDATE CASCADE;
-
-ALTER TABLE payment
-    ADD FOREIGN KEY (customer_id) REFERENCES customer (customer_id) ON DELETE CASCADE ON UPDATE CASCADE;

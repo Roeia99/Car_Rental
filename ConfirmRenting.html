@@ -46,25 +46,21 @@
                                  style="width: 33rem;height: 15rem;overflow: auto;">
                                 <div class="card-body text-white">
                                     <div class="container-fluid">
-                                        <table id="infoTable"
-                                               class="text-white table table-fixed table-condensed">
-                                            <thead>
-                                            <tr>
-                                                <th class="col-xs-3">car ID</th>
-                                                <th class="col-xs-3">Model</th>
-                                                <th class="col-xs-6">Year</th>
-                                                <th class="col-xs-6">Color</th>
-                                            </tr>
-                                            </thead>
-                                            <tbody>
-                                            <tr class="clickableRow">
-                                                <td class="col-xs-3">John</td>
-                                                <td class="col-xs-3">43</td>
-                                                <td class="col-xs-6">School Teacher</td>
-                                                <td class="col-xs-6">$43,000</td>
-                                            </tr>
-                                            </tbody>
-                                        </table>
+                                        <div class="mt-2 remember">
+                                            <label style="font-size: 22px">Model:</label> <label id="model" style="font-size: 22px">M</label> 
+                                        </div>
+                                        <div class="mt-2 remember">
+                                            <label  style="font-size: 22px">Year:</label> <label for="year" style="font-size: 22px">Y</label>
+                                        </div>
+                                        <div class="mt-2 remember">
+                                            <label style="font-size: 22px">Color:</label> <label for="color" style="font-size: 22px">C</label>
+                                        </div>
+                                        <div class="mt-2 remember">
+                                            <label style="font-size: 22px">Office name:</label> <label for="office_name" style="font-size: 22px">O</label>
+                                        </div>
+                                        <div class="mt-2 remember">
+                                            <label   style="font-size: 22px">Office Location:</label>  <label for="Office_location" style="font-size: 22px">O</label>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -74,7 +70,10 @@
                                         <div class="input-group form-group">
                                             <div class="form-group">
                                                 <div class="card-header">
-                                                    <h3>Payment</h3>
+                                                    <h3>Payment details</h3>
+                                                </div>
+                                                <div class="mt-2 remember">
+                                                    <span style="padding-right: 7em">Pick date</span>Return date
                                                 </div>
                                                 <div class="mt-2 input-group form-group">
                                                     <input
@@ -88,16 +87,17 @@
                                                             class="form-control input-sm"
                                                             placeholder="day/month/year">
                                                 </div>
-                                                <div class="mt-2 remember">
-                                                    <label for="Pay Date" style="font-size: 22px">Pay Date:</label>
+                                                <div class="mt-2 form-group">
+                                                    <input id="done" type="click" value="Done" style="width: 250px" class="btn float-right login_btn">
                                                 </div>
                                                 <div class="mt-2 remember">
-                                                    <label for="Pickup Location" style="font-size: 22px">Pickup
-                                                        Location:</label>
+                                                    <label style="font-size: 22px">Pay Date:</label> <label id="Pay_Date" style="font-size: 22px">Pay Date:</label>
                                                 </div>
+                                               
                                                 <div class="mt-2 remember">
-                                                    <label for="Total Price" style="font-size: 22px">Total
-                                                        Price:</label>
+                                                    <label style="font-size: 22px">Total
+                                                        Price:</label><label for="Total_Price" style="font-size: 22px">Total
+                                                            Price:</label>
                                                 </div>
                                             </div>
                                         </div>
