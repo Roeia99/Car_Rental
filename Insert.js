@@ -50,10 +50,6 @@ function validate(formData){
         alert("Please Enter Car's Full Information");
         valid = false;
     }
-    else if (isNaN(formData["CarID"]) ){
-        alert("Please Enter a Valid Car ID");
-        valid = false;
-    }
 
     else if (isNaN(formData["Year"]) ){
         alert("Please Enter a Valid Year");

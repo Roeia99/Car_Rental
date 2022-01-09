@@ -22,7 +22,7 @@ $(document).ready(function () {
                 //     $("#email-group").append('<div class="help-block">' + data.errors.email + "</div>");
                  //}
 				 $("form").html('<script></script>'+'<div class="alert alert-success">' + data.message + "</div>");
-				  window.location.href = 'Admin.php';
+				  window.location.href = 'AdminFirstPage.html';
             }
 			if(data.customer) { // Success
                 $("form").html('<script></script>'+'<div class="alert alert-success">' + data.message + "</div>");

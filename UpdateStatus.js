@@ -61,10 +61,6 @@ function validate(formData){
         alert("Please Enter Car's Full Information");
         valid = false;
     }
-    else if (isNaN(formData["CarID"]) ){
-        alert("Please Enter a Valid Car ID");
-        valid = false;
-    }
 
     else if ((formData["Status"] != "active" && formData["Status"] != "out of service")){
         alert("Please Enter a Valid Status ( active or out of service)");
