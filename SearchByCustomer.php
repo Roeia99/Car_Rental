@@ -1,5 +1,17 @@
 <?php
 
+
+function console_log($output, $with_script_tags = true)
+{
+ $js_code = 'console.log(' . json_encode($output, JSON_HEX_TAG) . ');';
+ if ($with_script_tags) {
+ $js_code = '<script>' . $js_code . '</script>';
+ }
+ echo $js_code;
+}
+
+
+
 $errors = [];
 $data = [];
 
@@ -79,14 +91,17 @@ if(!empty($country)){
 if($string != ""){
     $string = "WHERE ".$string;
 }
+console_log($string);
 
 $connection = mysqli_connect('localhost', 'root', '', 'car_rental_system');
 if (!$connection) {
     return;
 }
 
-$query = mysqli_query($connection, "SELECT * FROM report4 $string ");
+$query = mysqli_query($connection, "SELECT * FROM report4 $string");
 $num_rows = mysqli_num_rows($query);
+
+console_log($num_rows);
 
 if($num_rows!=0)
 {
