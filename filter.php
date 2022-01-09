@@ -1,15 +1,19 @@
 <?php
 
-$errors = [];
 $data = [];
 $i = 0;
+
 $MaxPrice = $_POST['MaxPrice'];
 $MinPrice = $_POST['MinPrice'];
+$year = $_POST['year'];
+$color = $_POST['color'];
+$country = $_POST['country'];
+$model = $_POST['year'];
 
 $connection = mysqli_connect('localhost','root','','course_regiseration');
 if (!$connection){ return; }
-$sql = "SELECT * FROM `enrolled`";
 
+$sql = "SELECT * FROM `car`";
 $query = mysqli_query($connection,$sql);
 $num_rows = mysqli_num_rows($query);
 

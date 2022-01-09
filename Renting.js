@@ -1,4 +1,5 @@
 $(document).ready(function () {
+
     $('#infoTable').on('click', 'tbody tr', function (event) {
         $(this).addClass('highlight').siblings().removeClass('highlight');
         console.log(this);
@@ -9,30 +10,14 @@ $(document).ready(function () {
 
     $("#filter-form").submit(function (event) {
         $(".help-block").remove();
-        var formData = {
+        const formData = {
             MinPrice: $("#MinPrice").val(),
             MaxPrice: $("#MaxPrice").val(),
+            year: $('#year-filter').val(),
+            color: $('#color-filter').val(),
+            country: $('#country-filter').val(),
+            model: $('#model-filter').val()
         };
-
-        const selected_year = $('#year-filter').val();
-        if (selected_year !== '') {
-            formData['year'] = selected_year;
-        }
-
-        const selected_color = $('#color-filter').val();
-        if (selected_color !== '') {
-            formData['color'] = selected_color;
-        }
-
-        const selected_country = $('#country-filter').val();
-        if (selected_country !== '') {
-            formData[''] = selected_country;
-        }
-        // Get Model
-        const selected_model = $('#model-filter').val();
-        if (selected_model !== '') {
-            formData['model'] = selected_model;
-        }
 
         console.log(formData);
         validate(formData);

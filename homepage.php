@@ -1,4 +1,5 @@
-<?php
+<?php        return this.getAttribute("value"); // or return $(this).attr("value");
+
 
 $errors = [];
 $data = [];
