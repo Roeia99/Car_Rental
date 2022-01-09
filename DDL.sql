@@ -1,4 +1,9 @@
+DROP DATABASE if exists car_rental_system;
+
 CREATE DATABASE car_rental_system;
+
+USE car_rental_system;
+
 CREATE TABLE car
 (
     car_id      VARCHAR(10) PRIMARY KEY,

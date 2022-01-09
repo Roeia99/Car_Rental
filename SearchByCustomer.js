@@ -1,8 +1,16 @@
 $(document).ready(function () {
-    $("form").submit(function (event) {
-        $(".form-group").removeClass("has-error");
+
+    $('#infoTable').on('click', 'tbody tr', function (event) {
+        $(this).addClass('highlight').siblings().removeClass('highlight');
+        console.log(this);
+        $("td", this).each(function (j) {
+            console.log(j);
+        });
+    });
+
+    $("#filter-form").submit(function (event) {
         $(".help-block").remove();
-        var formData = {
+        const formData = {
             Fname: $("#Fname").val(),
             Lname: $("#Lname").val(),
             email: $("#email").val(),
@@ -12,27 +20,68 @@ $(document).ready(function () {
             country: $("#country").val(),
         };
 
-        console.log(formData);
-
-        validate(formData);
         $.ajax({
             type: "POST",
-            url: "SearchByCustomer.php",
+            url: 'SearchByCustomer.php',
             data: formData,
             dataType: "json",
             encode: true,
-        }).done(function (data) {
-            console.log(data);
-            if (!data.success) { // Error
-                console.log(data);
-
-            } else { // Success
-                //$("form").html('<script></script>'+'<div class="alert alert-success">' + data.message + "</div>");
-                //window.location.href = 'Renting.php';
-            }
         })
+            .done(function (data) {
+                // console.log(data);
+                $('#infoTable').bootstrapTable({
+                    toggle: true,
+                    pagination: true,
+                    striped: true,
+                    pageSize: 10,
+                    clickToSelect: true,
+                    columns: [{
+                        field: 'id',
+                        title: 'Customer ID',
+                        sortable: true
+                    }, {
+                        field: 'fn',
+                        title: 'First Name'
+                    }, {
+                        field: 'ln',
+                        title: 'Last Name'
+                    }, {
+                        field: 'ci',
+                        title: 'Plate ID'
+                    }, {
+                        field: 'm',
+                        title: 'model'
+                    }, {
+                        field: 'pd',
+                        title: 'pay_date'
+                    }, {
+                        field: 'tp',
+                        title: 'Payment'
+                    }
+                    ],
+                    data: data
+                });
+            })
             .fail(function (data) {
-                // $("#message-group").html('<div class="alert alert-danger">Could not reach server, please try again later.</div>');
+                // Our error logic here
+                var msg = '';
+                if (jqXHR.status === 0) {
+                    msg = 'Not connect.\n Verify Network.';
+                } else if (jqXHR.status == 404) {
+                    msg = 'Requested page not found. [404]';
+                } else if (jqXHR.status == 500) {
+                    msg = 'Internal Server Error [500].';
+                } else if (exception === 'parsererror') {
+                    msg = 'Requested JSON parse failed.';
+                } else if (exception === 'timeout') {
+                    msg = 'Time out error.';
+                } else if (exception === 'abort') {
+                    msg = 'Ajax request aborted.';
+                } else {
+                    msg = 'Uncaught Error.\n' + jqXHR.responseText;
+                }
+                alert(msg);
+                $('#post').html(msg);
             });
         event.preventDefault();
 
@@ -40,31 +89,3 @@ $(document).ready(function () {
 
 });
 
-function validate(formData){
-    let valid = true;
-    if (formData["Fname"] === '' || formData["Lname"] === '' ){
-        alert("Please Enter your Full Name");
-        valid = false;
-    }
-    if (formData["email"] === ''){
-        alert("Please Enter your Email");
-        valid = false;
-    }
-    if (formData["password"] === ''){
-        alert("Please Enter your Password");
-        valid = false;
-    }
-    if (formData["password2"] === '' || formData["password2"].localeCompare(formData["password"]) ){
-        alert("Please Confirm your Password");
-        valid = false;
-    }
-    if (formData["phone"] === '' || isNaN(formData["phone"])){
-        alert("Please Enter your Correct Phone Number");
-        valid = false;
-    }
-    if (formData["street"] === '' || formData["city"] === '' || formData["country"] === '' ){
-        alert("Please Enter your Full Address");
-        valid = false;
-    }
-    return valid
-}
