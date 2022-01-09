@@ -1,4 +1,4 @@
-<?php        return this.getAttribute("value"); // or return $(this).attr("value");
+<?php       // return this.getAttribute("value"); // or return $(this).attr("value");
 
 
 $errors = [];
