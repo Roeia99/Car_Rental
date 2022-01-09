@@ -28,11 +28,6 @@ $(document).ready(function () {
                 if (!data.success) { // Error
                     console.log(data);
 
-                    // if (data.errors.email) { // If email already exists
-                    //     $("#email-group").addClass("has-error");
-                    //     $("#email-group").append('<div class="help-block">' + data.errors.email + "</div>");
-                    // }
-
                 } else { // Success
                     $("form").html('<script></script>'+'<div class="alert alert-success">' + data.message + "</div>");
                     window.location.href = 'Renting.php';

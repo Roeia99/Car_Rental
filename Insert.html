@@ -1,0 +1,149 @@
+<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<!------ Include the above in your HEAD tag ---------->
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Admin_Insert Page</title>
+
+    <!--Bootstrap 4 CDN-->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+          integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+
+    <!--Fontawesome CDN-->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css"
+          integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
+
+    <!--Custom styles-->
+    <link rel="stylesheet" type="text/css" href="styles.css">
+    <script src="Insert.js"></script>
+
+</head>
+<body>
+<div class="container">
+    <div class="d-flex justify-content-center h-100">
+        <div class="card" style="width: 35rem;height: 24rem;">
+            <div class="card-header">
+                <h3>Insert Car</h3>
+            </div>
+            <div class="card-body">
+                <form action="Insert.php" method="POST">
+                    <div id="names-group" class="form-group">
+                        <div class="row">
+                            <div class="col">
+                                <!--Car ID-->
+                                <div id="CarID-group" class="form-group">
+                                    <div class="input-group form-group">
+                                        <div class="input-group-prepend">
+                                            <span class="input-group-text"><i class="fa fa-credit-card"></i></span>
+                                        </div>
+                                        <input
+                                                id="CarID"
+                                                type="text"
+                                                class="form-control"
+                                                placeholder="Plate ID">
+                                    </div>
+                                </div>
+                                <!-- Year-->
+                                <div id="Year-group" class="form-group">
+                                    <div class="input-group form-group">
+                                        <div class="input-group-prepend">
+                                            <span class="input-group-text"><i class="fa fa-calendar"></i></span>
+                                        </div>
+                                        <input
+                                                id="Year"
+                                                type="text"
+                                                class="form-control"
+                                                placeholder="Year">
+                                    </div>
+                                </div>
+                                <!-- Status-->
+                                <div id="Status-group" class="form-group">
+                                    <div class="input-group form-group">
+                                        <div class="input-group-prepend">
+                                            <span class="input-group-text"><i class="fa fa-wrench"></i></span>
+                                        </div>
+                                        <input
+                                                id="Status"
+                                                type="text"
+                                                class="form-control"
+                                                placeholder="Status">
+                                    </div>
+                                </div>
+                                <!-- Price per Day-->
+                                <div id="PricePerDay-group" class="form-group">
+                                    <div class="input-group form-group">
+                                        <div class="input-group-prepend">
+                                            <span class="input-group-text"><i class="fa fa-shopping-cart"></i></span>
+                                        </div>
+                                        <input
+                                                id="PricePerDay"
+                                                type="text"
+                                                class="form-control"
+                                                placeholder="Price per Day">
+                                    </div>
+                                </div>
+                            </div>
+                            <!--Second Col-->
+                            <div class="col">
+                                <!--Car Model-->
+                                <div id="Model-group" class="form-group">
+                                    <div class="input-group form-group">
+                                        <div class="input-group-prepend">
+                                            <span class="input-group-text"><i class="fas fa-car"></i></span>
+                                        </div>
+                                        <input
+                                                id="Model"
+                                                type="text"
+                                                class="form-control"
+                                                placeholder="Model">
+                                    </div>
+                                </div>
+                                <!-- Color-->
+                                <div id="Color-group" class="form-group">
+                                    <div class="input-group form-group">
+                                        <div class="input-group-prepend">
+                                            <span class="input-group-text"><i class="fa fa-paint-brush"></i></span>
+                                        </div>
+                                        <input
+                                                id="Color"
+                                                type="text"
+                                                class="form-control"
+                                                placeholder="Color">
+                                    </div>
+                                </div>
+                                <!-- Office ID-->
+                                <div id="Office-group" class="form-group">
+                                    <div class="input-group form-group">
+                                        <div class="input-group-prepend">
+                                            <span class="input-group-text"><i class="fa fa-building"></i></span>
+                                        </div>
+                                        <input
+                                                id="Office"
+                                                type="text"
+                                                class="form-control"
+                                                placeholder="Office ID">
+                                    </div>
+                                </div>
+                                <!-- Insert Button-->
+                                <div class="form-group">
+                                    <input type="submit" value="Insert Car" style="width: 240px"
+                                           class="btn float-right login_btn">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="card-footer">
+                <div class="d-flex justify-content-left links">
+                    <a href="homepage.html">Sign Out</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>
