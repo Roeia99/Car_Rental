@@ -101,15 +101,18 @@
                                         </div>
                                         <div class="mt-2 input-group form-group">
                                             <!-- to do put the pickup and return -->
-                                            <input id="PickupDate" type="text" class="form-control input-sm"
-                                                placeholder="day/month/year">
-                                            <input id="ReturnDate" type="text" class="form-control input-sm"
-                                                placeholder="day/month/year">
+                                            <?php
+                                            // $PickupDate = $_SESSION['PickupDate'];
+
+                                            // $ReturnDate = $_SESSION['ReturnDate']; 
+                                            echo"<label id=\"model\" style=\"font-size: 22px\">00/00/00</label>
+                                                    </div>";
+                                            echo"<label id=\"model\" style=\"font-size: 22px\">00/00/00</label>
+                                                    </div>";
+
+                                            ?>
                                         </div>
-                                        <div class="mt-2 form-group">
-                                            <input id="done" type="click" value="Done" style="width: 250px"
-                                                class="btn float-right login_btn">
-                                        </div>
+                                        
                                         <div class="mt-2 remember">
                                             <label style="font-size: 22px">Pay Date:</label> <label id="Pay_Date"
                                                 style="font-size: 22px">Pay Date:</label>
