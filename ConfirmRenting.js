@@ -1,28 +1,26 @@
 $(document).ready(function () {
 
     price = $("#price_day").text();
-    var data = {
-        customer_id,
-        car_id,
-        PickupDate,
-        ReturnDate,
-    }
+    PickupDate =$("#pickupDate").text();
+    ReturnDate =$("#returnDate").text();
     // console.log(document.getElementById("price_day").text());
-    date1 = "22/4/2022";
-    d = date1.split("/")
+    d = PickupDate.split("/")
     var d1 = new Date(d[2], d[1], d[0], 0, 0, 0, 0);
-    // console.log(d1);
-    date2 = "25/5/2022";
-    o = date2.split("/");
+    o = ReturnDate.split("/");
     var d2 = new Date(o[2], o[1], o[0], 0, 0, 0, 0);
-    // console.log(d2);
     var diff = d2.getTime() - d1.getTime();
     var daydiff = diff / (1000 * 60 * 60 * 24);
-    // console.log(daydiff);
-    document.getElementById("Pay_Date").innerHTML = date1;
-    // console.log(formData['price']);
-    totalPrice = daydiff * formData['price'];
+    document.getElementById("Pay_Date").innerHTML = PickupDate;
+    totalPrice = daydiff * price;
     document.getElementById("Total_Price").innerHTML = totalPrice;
+
+    var res_data = {
+        customer_id : "33",
+        car_id :$("#carId").text(),
+        PickupDate:d1,
+        ReturnDate:d2
+    };
+    console.log(res_data);
 
     $('#done').click(function () {
         formData = {
@@ -41,23 +39,41 @@ $(document).ready(function () {
         $.ajax({
             type: "POST",
             url: "ConfirmRentingSQL.php",
-            data: formData,
+            data: res_data,
             dataType: "json",
             encode: true,
         }).done(function (data) {
             // console.log(data);
             if (!data.success) { // Error
+                console.log(data);
+                alert("done");
+
                 // console.log(data);
 
             } else { // Success
-                $("form").html('<script></script>' + '<div class="alert alert-success">' + data.message + "</div>");
-                window.location.href = 'Renting.php';
+                alert("done2");
             }
         })
-            .fail(function (data) {
-                // $("#message-group").html('<div class="alert alert-danger">Could not reach server, please try again later.</div>');
-            });
-        alert("done");
+        .fail(function (jqXHR, exception) {
+            // Our error logic here
+            var msg = '';
+            if (jqXHR.status === 0) {
+            msg = 'Not connect.\n Verify Network.';
+            } else if (jqXHR.status == 404) {
+            msg = 'Requested page not found. [404]';
+            } else if (jqXHR.status == 500) {
+            msg = 'Internal Server Error [500].';
+            } else if (exception === 'parsererror') {
+            msg = 'Requested JSON parse failed.';
+            } else if (exception === 'timeout') {
+            msg = 'Time out error.';
+            } else if (exception === 'abort') {
+            msg = 'Ajax request aborted.';
+            } else {
+            msg = 'Uncaught Error.\n' + jqXHR.responseText;
+            }
+            alert(msg);
+           })
     })
     //     $("form").submit(function (event) { 
 });
