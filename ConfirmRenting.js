@@ -1,10 +1,13 @@
 $(document).ready(function () {
-    var formData = {
-        PickupDate: $("#PickupDate").val(),
-        ReturnDate: $("#ReturnDate").val(),
-        price: $("#price_day").text(),
-    };
-    console.log(document.getElementById("price_day"));
+
+    price = $("#price_day").text();
+    var data = {
+        customer_id,
+        car_id,
+        PickupDate,
+        ReturnDate,
+    }
+    // console.log(document.getElementById("price_day").text());
     date1 = "22/4/2022";
     d = date1.split("/")
     var d1 = new Date(d[2], d[1], d[0], 0, 0, 0, 0);
@@ -34,7 +37,7 @@ $(document).ready(function () {
 
 
     });
-    $('#confirm').click(function(){
+    $('#confirm').click(function () {
         $.ajax({
             type: "POST",
             url: "ConfirmRentingSQL.php",
@@ -47,7 +50,7 @@ $(document).ready(function () {
                 // console.log(data);
 
             } else { // Success
-                $("form").html('<script></script>'+'<div class="alert alert-success">' + data.message + "</div>");
+                $("form").html('<script></script>' + '<div class="alert alert-success">' + data.message + "</div>");
                 window.location.href = 'Renting.php';
             }
         })
