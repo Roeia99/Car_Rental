@@ -1,23 +1,26 @@
 $(document).ready(function () {
-    var formData = {
-        PickupDate: $("#PickupDate").val(),
-        ReturnDate: $("#ReturnDate").val(),
-        price: $("#price_day").text(),
-    };
-    console.log(document.getElementById("price_day"));
+
+    price = $("#price_day").text();
+    var data = {
+        customer_id,
+        car_id,
+        PickupDate,
+        ReturnDate,
+    }
+    // console.log(document.getElementById("price_day").text());
     date1 = "22/4/2022";
     d = date1.split("/")
     var d1 = new Date(d[2], d[1], d[0], 0, 0, 0, 0);
-    console.log(d1);
+    // console.log(d1);
     date2 = "25/5/2022";
     o = date2.split("/");
     var d2 = new Date(o[2], o[1], o[0], 0, 0, 0, 0);
-    console.log(d2);
+    // console.log(d2);
     var diff = d2.getTime() - d1.getTime();
     var daydiff = diff / (1000 * 60 * 60 * 24);
-    console.log(daydiff);
+    // console.log(daydiff);
     document.getElementById("Pay_Date").innerHTML = date1;
-    console.log(formData['price']);
+    // console.log(formData['price']);
     totalPrice = daydiff * formData['price'];
     document.getElementById("Total_Price").innerHTML = totalPrice;
 
@@ -30,11 +33,11 @@ $(document).ready(function () {
         validatedate(formData["ReturnDate"]);
         var x = document.getElementById("Pay_Date");
         x.innerHTML = formData["PickupDate"];
-        console.log(x);
+        // console.log(x);
 
 
     });
-    $('#confirm').click(function(){
+    $('#confirm').click(function () {
         $.ajax({
             type: "POST",
             url: "ConfirmRentingSQL.php",
@@ -42,12 +45,12 @@ $(document).ready(function () {
             dataType: "json",
             encode: true,
         }).done(function (data) {
-            console.log(data);
+            // console.log(data);
             if (!data.success) { // Error
-                console.log(data);
+                // console.log(data);
 
             } else { // Success
-                $("form").html('<script></script>'+'<div class="alert alert-success">' + data.message + "</div>");
+                $("form").html('<script></script>' + '<div class="alert alert-success">' + data.message + "</div>");
                 window.location.href = 'Renting.php';
             }
         })

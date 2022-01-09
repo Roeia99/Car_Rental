@@ -1,14 +1,11 @@
 $(document).ready(function () {
-
-    $('#infoTable').on('click', 'tbody tr', function (event) {
+    $('#infoTable').on('click', 'tbody tr ', function (event) {
         $(this).addClass('highlight').siblings().removeClass('highlight');
         console.log(this);
-        $("td", this).each(function (j) {
-            console.log(j);
-        });
     });
 
     $("#filter-form").submit(function (event) {
+
         $(".help-block").remove();
         const formData = {
             MinPrice: $("#MinPrice").val(),
@@ -39,27 +36,96 @@ $(document).ready(function () {
                     clickToSelect: true,
                     columns: [{
                         field: 'id',
-                        title: 'Item ID',
+                        title: 'Plate NO.',
                         sortable: true
                     }, {
-                        field: 'cc',
-                        title: 'Course Name'
+                        field: 'model',
+                        title: 'Model',
+                        sortable: true
+
                     }, {
-                        field: 'bb',
-                        title: 'QUARTER'
+                        field: 'year',
+                        title: 'Year',
+                        sortable: true
+
                     }, {
-                        field: 'dd',
-                        title: 'year'
+                        field: 'color',
+                        title: 'Color',
+                        sortable: true
+
+                    }, {
+                        field: 'ppd',
+                        title: 'Price/Day',
+                        sortable: true
                     }],
                     data: data
                 });
             })
-            .fail(function (data) {
-            });
+            .fail(function (jqXHR, exception) {
+                // Our error logic here
+                var msg = '';
+                if (jqXHR.status === 0) {
+                    msg = 'Not connect.\n Verify Network.';
+                } else if (jqXHR.status == 404) {
+                    msg = 'Requested page not found. [404]';
+                } else if (jqXHR.status == 500) {
+                    msg = 'Internal Server Error [500].';
+                } else if (exception === 'parsererror') {
+                    msg = 'Requested JSON parse failed.';
+                } else if (exception === 'timeout') {
+                    msg = 'Time out error.';
+                } else if (exception === 'abort') {
+                    msg = 'Ajax request aborted.';
+                } else {
+                    msg = 'Uncaught Error.\n' + jqXHR.responseText;
+                }
+                alert(msg);
+            })
         event.preventDefault();
 
     });
 
+
+    $("#continue-form").submit(function (event) {
+        var reservationData = {
+            carID: $('#plate-id').val(),
+            pickDate : $('#StartDate').val(),
+            endDate : $('#EndDate').val(),
+        };
+
+        $.ajax({
+            type: "POST",
+            url: 'startReservationSession.php',
+            data: reservationData,
+            dataType: "json",
+            encode: true,
+        })
+            .done(function (data) {
+                alert(data['msg']);
+                window.location.href = 'ConfirmRenting.php';
+            })
+            .fail(function (jqXHR, exception) {
+                // Our error logic here
+                var msg = '';
+                if (jqXHR.status === 0) {
+                    msg = 'Not connect.\n Verify Network.';
+                } else if (jqXHR.status == 404) {
+                    msg = 'Requested page not found. [404]';
+                } else if (jqXHR.status == 500) {
+                    msg = 'Internal Server Error [500].';
+                } else if (exception === 'parsererror') {
+                    msg = 'Requested JSON parse failed.';
+                } else if (exception === 'timeout') {
+                    msg = 'Time out error.';
+                } else if (exception === 'abort') {
+                    msg = 'Ajax request aborted.';
+                } else {
+                    msg = 'Uncaught Error.\n' + jqXHR.responseText;
+                }
+                alert(msg);
+            });
+        event.preventDefault();
+    })
 });
 
 //Check if prices are not Numbers

@@ -13,11 +13,11 @@ $(document).ready(function () {
         const formData = {
             Fname: $("#Fname").val(),
             Lname: $("#Lname").val(),
-            email: $("#email").val(),
-            phone: $("#phone").val(),
-            street: $("#street").val(),
-            city: $("#city").val(),
-            country: $("#country").val(),
+            // email: $("#email").val(),
+            // phone: $("#phone").val(),
+            // street: $("#street").val(),
+            // city: $("#city").val(),
+            // country: $("#country").val(),
         };
 
         $.ajax({
