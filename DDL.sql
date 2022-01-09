@@ -67,7 +67,7 @@ ALTER TABLE reservation
 ALTER TABLE payment
     ADD FOREIGN KEY (res_id) REFERENCES reservation (res_id) ON DELETE CASCADE ON UPDATE CASCADE;
 
---Report 4
+
 CREATE VIEW report4 AS
 SELECT *
 
@@ -75,3 +75,9 @@ FROM
     customer as c
 NATURAL JOIN reservation as r
  NATURAL JOIN customer_payment as cp NATURAL JOIN Car;
+
+
+CREATE VIEW report3 AS 
+SELECT *
+FROM
+	car NATURAL JOIN reservation r GROUP BY r.res_id;

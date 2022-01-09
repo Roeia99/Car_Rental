@@ -29,13 +29,13 @@
 <body>
 <div class="container">
     <div class="d-flex justify-content-center h-100">
-        <div class="card" style="width: 80rem;height: 44rem;">
+        <div class="card" style="width: 90rem;height: 44rem;">
 			 <!-- Header -->
             <div class="card-header">
                 <h3>Admin</h3>
             </div>
             <div class="card-body">
-                <form id="filter-form" action="AdminSearch.php" method="POST">
+                <form id="filter-form" action="filterBycar.php" method="POST">
                     <div id="Dropdown-group" class="form-group">
                         
 <div class="row">
@@ -172,13 +172,16 @@
                                                    class="text-white table table-fixed table-condensed">
                                                 <thead>
                                                 <tr>
-                                                    <th class="col-xs-3">car ID</th>
+                                                    <th class="col-xs-3">Res ID</th>
+													<th class="col-xs-3">Customer ID</th>
+													<th class="col-xs-3">pickDate</th>
+													<th class="col-xs-3">ReturnDate</th>
+													<th class="col-xs-3">Car ID</th>
                                                     <th class="col-xs-3">Model</th>
                                                     <th class="col-xs-6">Year</th>
                                                     <th class="col-xs-6">Color</th>
 													<th class="col-xs-6">Status</th>
 													<th class="col-xs-6">office-ID</th>
-													<th class="col-xs-6">IS Reserved</th>
 													<th class="col-xs-6">Price/Day</th>
 													
                                                 </tr>

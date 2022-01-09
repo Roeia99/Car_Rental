@@ -1,39 +1,37 @@
 $(document).ready(function () {
-    $("form").submit(function (event) {
+
+    $('#infoTable').on('click', 'tbody tr', function (event) {
+        $(this).addClass('highlight').siblings().removeClass('highlight');
+        console.log(this);
+        $("td", this).each(function (j) {
+            console.log(j);
+        });
+    });
+
+    $("#filter-form").submit(function (event) {
         $(".help-block").remove();
-        var formData = {
-            CarID : $("#CarID").val(),
-			model : $("#model-filter").val(),
-			year  : $ ("#year-filter").val(),
-			color : $("#color-filter").val(),
-			country : $("#country-filter").val(),
-			 
+        const formData = {
+            MinPrice: $("#MinPrice").val(),
+            MaxPrice: $("#MaxPrice").val(),
+            year: $('#year-filter').val(),
+            color: $('#color-filter').val(),
+            country: $('#country-filter').val(),
+            model: $('#model-filter').val(),
+			louza : $('#CarID').val(),
         };
-        // if Car ID is not Empty check if it is not a number
-        if (isNaN(formData["CarID"])) {
-            alert("Please enter a Valid Plate ID");
-        }
-        // if start date is not Empty
-        if (formData["StartDate"] != "") {
-            validatedate(formData["StartDate"]);
-        }
-        // if End date is not Empty
-        if (formData["EndDate"] != "") {
-            validatedate(formData["EndDate"]);
-        }
-        // if State date is not Empty
-        if (formData["StateDate"]) {
-            validatedate(formData["StateDate"]);
-        }
+
+        console.log(formData);
+        //validate(formData);
 
         $.ajax({
             type: "POST",
-            url: "filterBycar.php",
+            url: 'filterBycar.php',
             data: formData,
             dataType: "json",
             encode: true,
-        }).done(function (data) {
-                 console.log(data);
+        })
+            .done(function (data) {
+                // console.log(data);
                 $('#infoTable').bootstrapTable({
                     toggle: true,
                     pagination: true,
@@ -42,9 +40,9 @@ $(document).ready(function () {
                     clickToSelect: true,
                     columns: [{
                         field: 'id',
-                        title: 'CarID',
-                        sortable: true
-                    }, {
+                        title: 'Car_ID'
+                        
+                    },{
                         field: 'm',
                         title: 'model'
                     }, {
@@ -60,9 +58,6 @@ $(document).ready(function () {
                         field: 'o',
                         title: 'office_id'
                     },{
-                        field: 'i',
-                        title: 'is_reserved'
-                    },{
                         field: 'p',
                         title: 'price/day'
                     }],
@@ -74,3 +69,5 @@ $(document).ready(function () {
         event.preventDefault();
 
     });
+
+});
