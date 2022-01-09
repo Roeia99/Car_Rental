@@ -2,7 +2,7 @@
 <html lang="en">
 
 <head>
-    <title>Admin Page</title>
+    <title>searchBycar</title>
 
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -121,7 +121,26 @@
 										<option	value ="1">active</option> 
 										<option	value ="2">out of service</option> 
                                     </select>
+									</div>
+                                <div class="card-header">
+                                    <h4>Duration</h4>
                                 </div>
+									<div class="input-group form-group" style="width: 18rem;">
+                                    <input
+                                            id="StartDate"
+                                            type="text"
+                                            class="form-control input-sm"
+                                            placeholder="YYYY-MM-DD(From)">
+                                </div>
+								<div class="input-group form-group" style="width: 18rem;">
+                                    <input
+                                            id="EndDate"
+                                            type="text"
+                                            class="form-control input-sm"
+                                            placeholder="YYYY-MM-DD(To)">
+                                </div>
+						
+								
 								<!--Search Col-->
                             
                                 <div class="card-header">
@@ -135,11 +154,13 @@
                                             class="form-control input-sm"
                                             placeholder="Plate ID">
                                 </div>
-								
+							
+				
 								 <div class="mt-2 form-group">
                                     <input type="submit" value="Search" class="btn float-right login_btn">
                                 </div>
 								</div>
+								
 		
 								 <!-- Results Col -->
                             <div class="col">
@@ -157,7 +178,8 @@
                                                     <th class="col-xs-6">Color</th>
 													<th class="col-xs-6">Status</th>
 													<th class="col-xs-6">office-ID</th>
-													<th class="col-xs-6">Color</th>
+													<th class="col-xs-6">IS Reserved</th>
+													<th class="col-xs-6">Price/Day</th>
 													
                                                 </tr>
                                                 </thead>
