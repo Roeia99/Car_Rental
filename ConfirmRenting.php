@@ -84,7 +84,7 @@
 
                                         echo "<div class=\"mt-2 remember\">
                                                     <label  style=\"font-size: 22px\">CAR ID:</label> 
-                                                    <label id=\"model\" style=\"font-size: 22px\">" . $carId . "</label>
+                                                    <label id=\"carId\" style=\"font-size: 22px\">" . $carId . "</label>
                                                     </div>";
                                         // if($num_rows!=0)
                                         echo "<div class=\"mt-2 remember\">
@@ -121,18 +121,18 @@
                                         <h3>Payment details</h3>
                                     </div>
                                     <div class="mt-2 remember">
-                                        <span style="padding-right: 7em">Pick date</span>Return date
+                                         <label   style="font-size: 22px">Pickup Date:</label>
+                                         <?php
+                                        $PickupDate = $_SESSION['PickupDate'];
+                                        echo "<label id=\"pickupDate\" style=\"font-size: 22px\">" .$PickupDate. "</label>";
+                                        ?>
                                     </div>
                                     <div class="mt-2 input-group form-group">
                                         <!-- to do put the pickup and return -->
+                                        <label style="font-size: 22px">Return Date:</label>
                                         <?php
-                                        $PickupDate = $_SESSION['PickupDate'];
-                                        $ReturnDate = $_SESSION['ReturnDate'];
-                                        echo " <div class=\"mt-2 remember\">
-                                        <span style=\"padding-right: 7em\">
-                                        " . $PickupDate . "
-                                        </span>" . $ReturnDate . "
-                                        </div>";
+                                        $returnDate = $_SESSION['ReturnDate'];
+                                        echo "<label id=\"returnDate\" style=\"font-size: 22px\">" .$ReturnDate. "</label>";
                                         ?>
                                     </div>
 
