@@ -1,48 +1,60 @@
 $(document).ready(function () {
-    $('#infoTable').on('click', 'tbody tr', function(event) {
+
+    $('#infoTable').on('click', 'tbody tr', function (event) {
         $(this).addClass('highlight').siblings().removeClass('highlight');
+        console.log(this);
+        $("td", this).each(function (j) {
+            console.log(j);
+        });
     });
 
     $("#filter-form").submit(function (event) {
         $(".help-block").remove();
-        var formData = {
+        const formData = {
             MinPrice: $("#MinPrice").val(),
             MaxPrice: $("#MaxPrice").val(),
+            year: $('#year-filter').val(),
+            color: $('#color-filter').val(),
+            country: $('#country-filter').val(),
+            model: $('#model-filter').val()
         };
+
+        console.log(formData);
         validate(formData);
+
         $.ajax({
             type: "POST",
-            url: "Renting.php",
+            url: 'filter.php',
             data: formData,
             dataType: "json",
             encode: true,
-        }).done(function (data) {
-            console.log(data);
-            $('#infoTable').bootstrapTable({
-
-                pagination: true,
-                striped: true,
-                pageSize: 10,
-                clickToSelect: true,
-                columns: [{
-                    field: 'id',
-                    title: 'Item ID',
-                    sortable : true
-                }, {
-                    field: 'cc',
-                    title: 'Course Name'
-                }, {
-                    field: 'bb',
-                    title: 'QUARTER'
-                }, {
-                    field: 'dd',
-                    title: 'year'
-                }],
-                data: data
-            });
         })
+            .done(function (data) {
+                // console.log(data);
+                $('#infoTable').bootstrapTable({
+                    toggle: true,
+                    pagination: true,
+                    striped: true,
+                    pageSize: 10,
+                    clickToSelect: true,
+                    columns: [{
+                        field: 'id',
+                        title: 'Item ID',
+                        sortable: true
+                    }, {
+                        field: 'cc',
+                        title: 'Course Name'
+                    }, {
+                        field: 'bb',
+                        title: 'QUARTER'
+                    }, {
+                        field: 'dd',
+                        title: 'year'
+                    }],
+                    data: data
+                });
+            })
             .fail(function (data) {
-                // $("#message-group").html('<div class="alert alert-danger">Could not reach server, please try again later.</div>');
             });
         event.preventDefault();
 

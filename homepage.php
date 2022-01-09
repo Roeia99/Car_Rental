@@ -1,18 +1,27 @@
-<?php
+<?php        return this.getAttribute("value"); // or return $(this).attr("value");
+
 
 $errors = [];
 $data = [];
 
 $email = $_POST['email'];
 $password = $_POST['password'];
-
+	
 // Empty Validations
 if (empty($email) or empty($password)) {
     $data['success'] = false;
     echo json_encode($data);
     return;
 }
-
+if($email == 'John.admin22@gmail.com' AND $password == '123456')
+	{
+			session_start();
+			$data['admin'] = true;
+			$data['customer'] = false;
+			$data['message'] = 'Login Successfully as Admin!';
+			echo json_encode($data);
+			
+	}else{
 $connection = mysqli_connect('localhost','root','','car_rental_system');
 if (!$connection){ return; }
 
@@ -27,23 +36,28 @@ if($num_rows!=0)
         $db_email = $row['email'];
         $db_password = $row['password'];
     }
-
+		
     if($email == $db_email )
     {
         session_start();
-        $data['success'] = true;
+		$data['customer'] = true;
+		$data['admin'] = false;
         $data['message'] = 'Login Successfully !';
+		
     }else{
-        $data['success'] = false;
+        $data['admin'] = false;
+		$data['customer'] = false;
         $errors['email'] = "Invalid Email or Password";
         $data['errors'] = $errors;
     }
 
 } else {
-    $data['success'] = false;
+    $data['admin'] = false;
+	$data['customer'] = false;
     $errors['email'] = "Invalid Email or Password";
     $data['errors'] = $errors;
-}
+	}
 
 mysqli_close($connection);
 echo json_encode($data);
+	}
