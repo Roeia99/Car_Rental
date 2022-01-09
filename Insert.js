@@ -22,18 +22,18 @@ $(document).ready(function () {
             dataType: "json",
             encode: true,
         }).done(function (data) {
-            console.log(data);
-            if (!data.success) { // Error
-                console.log(data);
-            } else { // Success
 
-                $("form").html('<script></script>'+'<div class="alert alert-success">' + data.message + "</div>");
-                window.location.href = '/Car_Rental/Renting.html';
+            if (!data.success) { // Error
+                alert(data.message);
+            } else { // Success
+                alert(data.message);
+                //$("form").html('<script></script>'+'<div class="alert alert-success">' + data.message + "</div>");
+                //window.location.href = '/Car_Rental/Insert.html';
             }
         })
             .fail(function (data) {
                 console.log(data);
-                // $("#message-group").html('<div class="alert alert-danger">Could not reach server, please try again later.</div>');
+                $("#message-group").html('<div class="alert alert-danger">Could not reach server, please try again later.</div>');
             });
         event.preventDefault();
 
