@@ -50,7 +50,7 @@
                                     <select class="custom-select mr-sm-2"
                                             id="model-filter"
                                             style="width: 18rem;">
-                                        <option selected>(Model)</option>
+                                        <option selected value="">(Model)</option>
                                         <?php
                                         $connection = mysqli_connect('localhost', 'root', '', 'car_rental_system');
                                         $sql = "SELECT distinct c.model model FROM `car` c ";
@@ -67,7 +67,7 @@
                                     <select class="custom-select mr-sm-2"
                                             id="year-filter"
                                             style="width: 18rem;">
-                                        <option selected>(Year)</option>
+                                        <option selected value="">(Year)</option>
                                         <?php
                                         $connection = mysqli_connect('localhost', 'root', '', 'car_rental_system');
                                         $sql = "SELECT distinct c.year `year` FROM `car` c ";
@@ -84,7 +84,7 @@
                                     <select class="custom-select mr-sm-2"
                                             id="color-filter"
                                             style="width: 18rem;">
-                                        <option selected>(Color)</option>
+                                        <option selected value="">(Color)</option>
                                         <?php
                                         $connection = mysqli_connect('localhost', 'root', '', 'car_rental_system');
                                         $sql = "SELECT distinct c.color `color` FROM `car` c ";
@@ -101,7 +101,7 @@
                                     <select class="custom-select mr-sm-2"
                                             id="country-filter"
                                             style="width: 18rem;">
-                                        <option selected>(Country)</option>
+                                        <option selected value="">(Country)</option>
                                         <?php
                                         $connection = mysqli_connect('localhost', 'root', '', 'car_rental_system');
                                         $sql = "SELECT distinct o.country `country` FROM `car` c NATURAL JOIN office o";
