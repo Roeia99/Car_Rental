@@ -41,14 +41,22 @@
                             <!--Search Col-->
                             <div class="col-sm-3">
                                 <div class="card-header">
-                                    <h3>Search by</h3>
+                                    <h4>Search by </h4>
                                 </div>
                                 <div class="mt-2 remember">
-                                    <label for="CarInformation" style="font-size: 19px">
+                                    <label for="CarInformation" style="font-size: 17px">
                                         Car Information:</label>
                                 </div>
+<!--                                Car id-->
+                                <div class="input-group form-group" style="width: 18rem;">
+                                    <input
+                                            id="CarID"
+                                            type="text"
+                                            class="form-control input-sm"
+                                            placeholder="Plate ID">
+                                </div>
                                 <!-- Model Dropdown Box -->
-                                <div class="form-group">
+                                <div class="form-group" >
                                     <select class="custom-select mr-sm-2"
                                             id="model-filter"
                                             style="width: 18rem;">
@@ -92,14 +100,14 @@
                                     </select>
                                 </div>
                                 <!-- Reservation Period-->
-                                <div class="mt-2 row">
+                                <div class="row">
                                     <div class="mt-2 remember">
-                                        <label for="ReservationDate" style="font-size: 19px">
+                                        <label for="ReservationDate" style="font-size: 17px">
                                             Reservation Date:</label>
                                     </div>
                                     <!-- Start Date-->
                                     <div class="col">
-                                        <div class="input-group form-group">
+                                        <div class="input-group form-group" style="width: 8rem;" >
                                             <input
                                                     id="StartDate"
                                                     type="text"
@@ -109,34 +117,34 @@
                                     </div>
                                     <!--End Date-->
                                     <div class="col">
-                                        <div class="input-group form-group">
+                                        <div class="input-group form-group" style="width: 8rem;">
                                             <input id="EndDate" type="text" class="form-control"
                                                    placeholder="End date">
                                         </div>
                                     </div>
                                     <!--Customer-->
                                     <div class="mt-2 remember">
-                                        <label for="CustomerInformation" style="font-size: 19px">
+                                        <label for="CustomerInformation" style="font-size: 17px">
                                             Customer :</label>
                                     </div>
                                     <!--First Name-->
-                                    <div class="input-group form-group">
+                                    <div class="input-group form-group" style="width: 310px;">
                                         <input
                                                 id="Fname"
                                                 type="text"
                                                 class="form-control input-sm"
-                                                placeholder="First Name">
+                                                placeholder="First name">
                                     </div>
                                     <!--Last Name-->
-                                    <div class="input-group form-group">
+                                    <div class="input-group form-group" style="width: 310px;">
                                         <input
                                                 id="Lname"
                                                 type="text"
                                                 class="form-control input-sm"
-                                                placeholder="Last Name">
+                                                placeholder="Last name">
                                     </div>
                                     <!--Email-->
-                                    <div class="input-group form-group">
+                                    <div class="input-group form-group" style="width: 310px;">
                                         <input
                                                 id="email"
                                                 type="text"
@@ -145,11 +153,11 @@
                                     </div>
                                     <!--State of Car on specific Date-->
                                     <div class="mt-2 remember">
-                                        <label for="StateDate" style="font-size: 19px">
+                                        <label for="StateDate" style="font-size: 17px">
                                             Car State on a specific Date :</label>
                                     </div>
                                     <!--Date-->
-                                    <div class="input-group form-group">
+                                    <div class="input-group form-group" style="width: 310px;">
                                         <input
                                                 id="StateDate"
                                                 type="text"
@@ -158,14 +166,14 @@
                                     </div>
 
                                 </div>
-                                <div class="mt-4 form-group">
+                                <div class="mt-2 form-group">
                                     <input type="submit" value="Search" class="btn float-right login_btn">
                                 </div>
                             </div>
                             <!-- Results Col -->
                             <div class="col">
                                 <div class="card text-white bg-primary mb-4"
-                                     style="width: 55rem;height: 32rem;overflow: auto;">
+                                     style="width: 55rem;height: 30rem;overflow: auto;">
                                     <div class="card-body text-white">
                                         <div class="container-fluid">
                                             <table id="infoTable"
@@ -181,6 +189,9 @@
                                             </table>
                                         </div>
                                     </div>
+                                </div>
+                                <div class="mt-2 form-group">
+                                    <input type="submit" value="Show more Information" style="width: 250px" class="btn float-right login_btn">
                                 </div>
                             </div>
                         </div>

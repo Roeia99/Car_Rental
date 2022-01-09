@@ -2,10 +2,15 @@ $(document).ready(function () {
     $("form").submit(function (event) {
         $(".help-block").remove();
         var formData = {
+            CarID : $("#CarID").val(),
             StartDate: $("#StartDate").val(),
             EndDate: $("#EndDate").val(),
             StateDate: $("#StateDate").val(),
         };
+        // if Car ID is not Empty check if it is not a number
+        if (isNaN(formData["CarID"])) {
+            alert("Please enter a Valid Plate ID");
+        }
         // if start date is not Empty
         if (formData["StartDate"] != "") {
             validatedate(formData["StartDate"]);
