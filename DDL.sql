@@ -75,11 +75,10 @@ ALTER TABLE payment
 
 CREATE VIEW report4 AS
 SELECT *
-
 FROM
     customer as c
 NATURAL JOIN reservation as r
- NATURAL JOIN customer_payment as cp NATURAL JOIN Car;
+ NATURAL JOIN customer_payment as cp NATURAL JOIN car;
 
 
 CREATE VIEW report3 AS 
