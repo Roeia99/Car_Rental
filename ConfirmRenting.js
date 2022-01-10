@@ -1,24 +1,31 @@
 $(document).ready(function () {
 
     price = $("#price_day").text();
-    PickupDate =$("#pickupDate").text();
-    ReturnDate =$("#returnDate").text();
+    var PickupDate =$("#pickupDate").text();
+    var ReturnDate =$("#returnDate").text();
     // console.log(document.getElementById("price_day").text());
+    //
     d = PickupDate.split("/")
     var d1 = new Date(d[2], d[1], d[0], 0, 0, 0, 0);
     o = ReturnDate.split("/");
     var d2 = new Date(o[2], o[1], o[0], 0, 0, 0, 0);
+    console.log(d2);
     var diff = d2.getTime() - d1.getTime();
     var daydiff = diff / (1000 * 60 * 60 * 24);
     document.getElementById("Pay_Date").innerHTML = PickupDate;
     totalPrice = daydiff * price;
     document.getElementById("Total_Price").innerHTML = totalPrice;
+    
+    date1 = d1.toISOString().slice(0, 19).replace('T', ' ');
+    date2 = d2.toISOString().slice(0, 19).replace('T', ' ');
+    console.log(date1);
+    console.log(date2);
 
     var res_data = {
-        customer_id : "33",
+        customer_id : "1",
         car_id :$("#carId").text(),
-        PickupDate:d1,
-        ReturnDate:d2
+        PickupDate:date1,
+        ReturnDate:date2
     };
     console.log(res_data);
 
@@ -46,12 +53,12 @@ $(document).ready(function () {
             // console.log(data);
             if (!data.success) { // Error
                 console.log(data);
-                alert("done");
+                alert("CAR already reserved");
 
                 // console.log(data);
 
             } else { // Success
-                alert("done2");
+                alert("CAR RESERVED SUCCSESFULLY");
             }
         })
         .fail(function (jqXHR, exception) {
