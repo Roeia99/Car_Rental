@@ -58,5 +58,5 @@ if ($email == 'John.admin22@gmail.com' and $password == '123456') {
     }
 
     mysqli_close($connection);
+    echo json_encode($data);
 }
-echo json_encode($data);
