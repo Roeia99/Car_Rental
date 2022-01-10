@@ -36,11 +36,11 @@ CREATE Table reservation
     res_id      int AUTO_INCREMENT UNIQUE,
     customer_id INT,
     car_id      VARCHAR(10),
-    res_date    DATE DEFAULT CURRENT_TIMESTAMP,
-    pick_date   DATE NOT NULL,
-    return_date DATE NOT NULL,
+    res_date    DATETIME DEFAULT CURRENT_TIMESTAMP,
+    pick_date   DATETIME NOT NULL,
+    return_date DATETIME NOT NULL,
     duration    INT AS (timestampdiff (day, pick_date, return_date)),
-    PRIMARY KEY (res_id, customer_id, car_id)
+    PRIMARY KEY (res_id, customer_id, car_id,res_date,pick_date)
 );
 
 CREATE Table payment
@@ -77,21 +77,21 @@ ALTER TABLE car_status
     ADD FOREIGN KEY (car_id) REFERENCES car (car_id) ON DELETE CASCADE ON UPDATE CASCADE;
 
 
-
 CREATE VIEW report4 AS
 SELECT *
 
 FROM
     customer as c
 NATURAL JOIN reservation as r
- NATURAL JOIN customer_payment as cp NATURAL JOIN car;
+ NATURAL JOIN customer_payment as cp NATURAL JOIN Car;
 
-CREATE VIEW report1 AS
-SELECT *
-FROM
-	car NATURAL JOIN reservation r NATURAL JOIN customer;
 
 CREATE VIEW report3 AS 
 SELECT *
 FROM
 	car NATURAL JOIN reservation r GROUP BY r.res_id;
+
+CREATE VIEW report1 AS
+SELECT *
+FROM
+	car NATURAL JOIN reservation r NATURAL JOIN customer;

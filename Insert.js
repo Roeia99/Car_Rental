@@ -27,8 +27,8 @@ $(document).ready(function () {
                 alert(data.message);
             } else { // Success
                 alert(data.message);
-                //$("form").html('<script></script>'+'<div class="alert alert-success">' + data.message + "</div>");
-                //window.location.href = '/Car_Rental/Insert.html';
+                $("form").html('<script></script>'+'<div class="alert alert-success">' + data.message + "</div>");
+                window.location.href = 'AdminFirstPage.html';
             }
         })
             .fail(function (data) {

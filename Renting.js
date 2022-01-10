@@ -92,6 +92,7 @@ $(document).ready(function () {
             pickDate: reformatDate($('#StartDate').val()),
             endDate: reformatDate($('#EndDate').val()),
         };
+        //validate(reservationData);
 
         // if (validate(formData))
         $.ajax({
@@ -135,12 +136,19 @@ function reformatDate(dateStr) {
     return a[2]+'/'+a[1] +'/' +a[0];
 }
 
-//Check if prices are not Numbers
 function validate(formData) {
     let valid = true;
 
     if (formData['EndDate'] === '' || formData['StartDate'] === '') {
         alert('Please Insert Dates');
+        valid = false;
+    }
+    if (formData['pickDate'] === '' || formData['endDate'] === '') {
+        alert('Please Insert Dates');
+        valid = false;
+    }
+    if (formData['carID'] === '' ) {
+        alert('Please Choose Plate ID');
         valid = false;
     }
     if ((isNaN(formData["MaxPrice"]) || isNaN(formData["MinPrice"])) || ((formData["MaxPrice"]) < formData["MinPrice"])) {
