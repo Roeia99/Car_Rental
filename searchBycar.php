@@ -29,7 +29,7 @@
 <body>
 <div class="container">
     <div class="d-flex justify-content-center h-100">
-        <div class="card" style="width: 90rem;height: 44rem;">
+        <div class="card" style="width: 90rem;height: 40rem;">
 			 <!-- Header -->
             <div class="card-header">
                 <h3>Admin</h3>
@@ -37,14 +37,13 @@
             <div class="card-body">
                 <form id="filter-form" action="filterBycar.php" method="POST">
                     <div id="Dropdown-group" class="form-group">
-                        
-<div class="row">
+                        <div class="row">
                             <!--Search Col-->
                             <div class="col-sm-3">
                                 <div class="card-header">
                                     <h4>Search by Car Specs</h4>
                                 </div>
-					<!-- Model Dropdown Box -->
+					            <!-- Model Dropdown Box -->
                                 <div class="form-group" >
                                     <select class="custom-select mr-sm-2"
                                             id="model-filter"
@@ -159,9 +158,9 @@
 								 <div class="mt-2 form-group">
                                     <input type="submit" value="Search" class="btn float-right login_btn">
                                 </div>
-								</div>
-								
-		
+                            </div>
+
+
 								 <!-- Results Col -->
                             <div class="col">
                                 <div class="card text-white bg-primary mb-4"
@@ -190,3 +189,13 @@
                                         </div>
                                     </div>
                                 </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-footer">
+                                    <div class="d-flex  justify-content-left links">
+                                        <a href="homepage.html">Sign Out</a>
+                                    </div>
+                    </div>
+                </form>
+            </div>
