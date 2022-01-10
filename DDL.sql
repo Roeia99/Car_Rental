@@ -80,6 +80,10 @@ FROM
 NATURAL JOIN reservation as r
  NATURAL JOIN customer_payment as cp NATURAL JOIN car;
 
+CREATE VIEW report1 AS
+SELECT *
+FROM
+	car NATURAL JOIN reservation r NATURAL JOIN customer;
 
 CREATE VIEW report3 AS 
 SELECT *

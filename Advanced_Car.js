@@ -21,7 +21,6 @@ $(document).ready(function () {
         };
 
         console.log(formData);
-        //validate(formData);
 
         $.ajax({
             type: "POST",
