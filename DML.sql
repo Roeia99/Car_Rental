@@ -16,5 +16,4 @@ INSERT INTO payment(res_id,is_paid,pay_date)VALUES('1',true,'2022-1-1');
 INSERT INTO reservation(res_id,customer_id,car_id,pick_date,return_date)VALUES('2','2','HELLO','2022-1-1','2022-1-1');
 INSERT INTO payment(res_id,is_paid,pay_date)VALUES('2',true,'2022-1-2');
 
-INSERT INTO reservation(res_id,customer_id,car_id,pick_date,return_date)VALUES('3','1','ABCD','2022-1-1','2022-1-1');
-INSERT INTO payment(res_id,is_paid,pay_date)VALUES('2',true,'2022-1-2');
+INSERT INTO reservation(res_id,customer_id,car_id,pick_date,return_date)VALUES('3','1','HELLO','2022-6-1','2022-7-1');

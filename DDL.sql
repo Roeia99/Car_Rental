@@ -1,9 +1,4 @@
-DROP DATABASE if exists car_rental_system;
-
 CREATE DATABASE car_rental_system;
-
-USE car_rental_system;
-
 CREATE TABLE car
 (
     car_id      VARCHAR(10) PRIMARY KEY,
@@ -55,7 +50,13 @@ CREATE Table payment
     pay_date    DATETIME,
     PRIMARY KEY (res_id)
 );
-
+CREATE TABLE car_status
+(
+	car_id VARCHAR(10),
+	status VARCHAR(50),
+	date DATETIME DEFAULT CURRENT_TIMESTAMP,
+	PRIMARY KEY (car_id,date)
+);
 CREATE VIEW customer_payment AS
 	SELECT p.* , (c.price_per_day * r.duration) total_pay
 	FROM car c NATURAL JOIN reservation r NATURAL JOIN payment p;
@@ -72,13 +73,19 @@ ALTER TABLE reservation
 ALTER TABLE payment
     ADD FOREIGN KEY (res_id) REFERENCES reservation (res_id) ON DELETE CASCADE ON UPDATE CASCADE;
 
+ALTER TABLE car_status
+    ADD FOREIGN KEY (car_id) REFERENCES car (car_id) ON DELETE CASCADE ON UPDATE CASCADE;
+
+ALTER TABLE car_status
+    ADD FOREIGN KEY (status) REFERENCES car (status) ON DELETE CASCADE ON UPDATE CASCADE;
 
 CREATE VIEW report4 AS
 SELECT *
+
 FROM
     customer as c
 NATURAL JOIN reservation as r
- NATURAL JOIN customer_payment as cp NATURAL JOIN car;
+ NATURAL JOIN customer_payment as cp NATURAL JOIN Car;
 
 CREATE VIEW report1 AS
 SELECT *

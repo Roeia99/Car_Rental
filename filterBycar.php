@@ -7,9 +7,62 @@ $string = "";
 
 $year = $_POST['year'];
 $color = $_POST['color'];
-$country = $_POST['country'];
 $model = $_POST['model'];
+$status = $_POST['status'];
 $louza = $_POST['louza'];
+$start =$_POST['date1'];
+$end =$_POST['date2'];
+
+
+if(!empty($start)&& !empty($end)){
+
+    if($string != ""){
+    $string = $string."AND  ";
+    }
+    $string = $string."res_date >= '" . $start . "'AND res_date <= '" . $end . "'";
+
+}
+
+
+if(!empty($year)){
+
+    if($string != ""){
+    $string = $string."AND  ";
+    }
+    $string = $string."year= '" . $year . "'";
+
+}
+
+if(!empty($color)){
+
+    if($string != ""){
+    $string = $string."AND  ";
+    }
+    $string = $string."color= '" . $color . "'";
+
+}
+
+if(!empty($model)){
+
+    if($string != ""){
+    $string = $string."AND  ";
+    }
+    $string = $string."model= '" . $model . "'";
+
+}
+
+
+
+if(!empty($status)){
+
+    if($string != ""){
+    $string = $string."AND  ";
+    }
+    $string = $string."status= '" . $status . "'";
+
+}
+
+
 if(!empty($louza)){
 
     if($string != ""){
@@ -35,7 +88,11 @@ if($num_rows!=0)
 {
     while($row=mysqli_fetch_assoc($query))
     {
-       // $response[$i]['r_id'] = $row['res_id'];
+        $response[$i]['rid'] = $row['res_id'];
+		$response[$i]['cid'] = $row['customer_id'];
+		$response[$i]['res'] = $row['res_date'];
+		$response[$i]['pick'] = $row['pick_date'];
+		$response[$i]['return'] = $row['return_date'];
 		$response[$i]['id'] = $row['car_id'];
         $response[$i]['m'] = $row['model'];
         $response[$i]['y'] = $row['year'];
