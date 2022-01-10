@@ -14,6 +14,7 @@ $(document).ready(function () {
             color: $('#color-filter').val(),
             country: $('#country-filter').val(),
             model: $('#model-filter').val()
+
         };
 
         console.log(formData);

@@ -11,12 +11,12 @@ $(document).ready(function () {
     $("#search").click(function (event) {
         $(".help-block").remove();
         $sdata={
-            s:$("#date").val()
+            date :$("#date").val()
         };
         
         $.ajax({
             type: "POST",
-            url: 'SearchByCustomer.php',
+            url: 'StatusOnSpecificDay.php',
             data: $sdata,
             dataType: "json",
             encode: true,

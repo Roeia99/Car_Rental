@@ -3,9 +3,10 @@
 $data = [];
 $errors=[];
 $i = 0;
+$string ="";
 
 
-$date = $_POST['s'];
+$date = $_POST['date'];
 if (!empty($date)) {
 
     if ($string != "") {
