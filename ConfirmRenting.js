@@ -3,8 +3,7 @@ $(document).ready(function () {
     price = $("#price_day").text();
     var PickupDate =$("#pickupDate").text();
     var ReturnDate =$("#returnDate").text();
-    // console.log(document.getElementById("price_day").text());
-    //
+
     d = PickupDate.split("/")
     var d1 = new Date(d[2], d[1], d[0], 11, 0, 0, 0);
     o = ReturnDate.split("/");
@@ -54,8 +53,6 @@ $(document).ready(function () {
             if (!data.success) { // Error
                 console.log(data);
                 alert("CAR already reserved");
-
-                // console.log(data);
 
             } else { // Success
                 alert("CAR RESERVED SUCCSESFULLY");

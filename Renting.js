@@ -6,15 +6,15 @@ $(document).ready(function () {
 
     $("#filter-form").submit(function (event) {
 
-        $(".help-block").remove();
         const formData = {
             MinPrice: $("#MinPrice").val(),
             MaxPrice: $("#MaxPrice").val(),
             year: $('#year-filter').val(),
             color: $('#color-filter').val(),
             country: $('#country-filter').val(),
-            model: $('#model-filter').val()
-
+            model: $('#model-filter').val(),
+            StartDate: $('#StartDate').val(),
+            EndDate: $('#EndDate').val()
         };
 
         console.log(formData);
@@ -90,8 +90,8 @@ $(document).ready(function () {
     $("#continue-form").submit(function (event) {
         var reservationData = {
             carID: $('#plate-id').val(),
-            pickDate : $('#StartDate').val(),
-            endDate : $('#EndDate').val(),
+            pickDate: $('#StartDate').val(),
+            endDate: $('#EndDate').val(),
         };
 
         $.ajax({
@@ -129,11 +129,13 @@ $(document).ready(function () {
     })
 });
 
+
 //Check if prices are not Numbers
 function validate(formData) {
     let valid = true;
-    if (isNaN(formData["MaxPrice"]) || isNaN(formData["MinPrice"])) {
-        alert("Please Enter a valid Price");
+
+    if ((isNaN(formData["MaxPrice"]) || isNaN(formData["MinPrice"])) || ((formData["MaxPrice"]) < formData["MinPrice"])) {
+        alert("Please Enter a valid Price ranges");
         valid = false;
     }
     return valid

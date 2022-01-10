@@ -1,3 +1,9 @@
+<?php
+session_start();
+if (!isset($_SESSION["customer_id"]))
+    header("location:homepage.html");
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 

@@ -62,8 +62,7 @@ if ($num_rows == 0) {
         $data['message'] = 'ERROR Inserting to table !';
     }
 } else {
-    $errors['email'] = "Email already exists";
-    $data['errors'] = $errors;
+    $data['message'] = "Email already exists";
 }
 
 mysqli_close($connection);

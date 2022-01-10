@@ -36,10 +36,10 @@ if ($email == 'John.admin22@gmail.com' and $password == '123456') {
             $db_email = $row['email'];
             $db_password = $row['password'];
             $_SESSION['email'] = $db_email;
+            $_SESSION['customer_id'] = $row['customer_id'];
         }
 
         if ($email == $db_email) {
-            session_start();
             $data['customer'] = true;
             $data['admin'] = false;
             $data['message'] = 'Login Successfully !';
@@ -54,8 +54,7 @@ if ($email == 'John.admin22@gmail.com' and $password == '123456') {
     } else {
         $data['admin'] = false;
         $data['customer'] = false;
-        $errors['email'] = "Invalid Email or Password";
-        $data['errors'] = $errors;
+        $data['message'] = "Invalid Email or Password";
     }
 
     mysqli_close($connection);
