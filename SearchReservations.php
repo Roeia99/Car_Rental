@@ -10,7 +10,7 @@ $Edate = $_POST['Edate'];
 
 $connection = mysqli_connect('localhost','root','','car_rental_system');
 
-if (!empty($Sdate) && !empty($Edate) {
+if (!empty($Sdate) && !empty($Edate)) {
 
     $string = $string."WHERE res_date >= '" . $Sdate . "' AND res_date <= '" . $Edate . "'";
 
