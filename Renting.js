@@ -80,7 +80,7 @@ $(document).ready(function () {
                         msg = 'Uncaught Error.\n' + jqXHR.responseText;
                     }
                     alert(msg);
-                })
+                });
 
         event.preventDefault();
     });
@@ -89,46 +89,51 @@ $(document).ready(function () {
     $("#continue-form").submit(function (event) {
         var reservationData = {
             carID: $('#plate-id').val(),
-            pickDate: $('#StartDate').val(),
-            endDate: $('#EndDate').val(),
+            pickDate: reformatDate($('#StartDate').val()),
+            endDate: reformatDate($('#EndDate').val()),
         };
 
-        if (validate(formData))
-            $.ajax({
-                type: "POST",
-                url: 'startReservationSession.php',
-                data: reservationData,
-                dataType: "json",
-                encode: true,
+        // if (validate(formData))
+        $.ajax({
+            type: "POST",
+            url: 'startReservationSession.php',
+            data: reservationData,
+            dataType: "json",
+            encode: true,
+        })
+            .done(function (data) {
+                // alert(data['msg']);
+                window.location.href = 'ConfirmRenting.php';
             })
-                .done(function (data) {
-                    window.location.href = 'ConfirmRenting.php';
-                })
-                .fail(function (jqXHR, exception) {
-                    // Our error logic here
-                    var msg = '';
-                    if (jqXHR.status === 0) {
-                        msg = 'Not connect.\n Verify Network.';
-                    } else if (jqXHR.status == 404) {
-                        msg = 'Requested page not found. [404]';
-                    } else if (jqXHR.status == 500) {
-                        msg = 'Internal Server Error [500].';
-                    } else if (exception === 'parsererror') {
-                        msg = 'Requested JSON parse failed.';
-                    } else if (exception === 'timeout') {
-                        msg = 'Time out error.';
-                    } else if (exception === 'abort') {
-                        msg = 'Ajax request aborted.';
-                    } else {
-                        msg = 'Uncaught Error.\n' + jqXHR.responseText;
-                    }
-                    alert(msg);
-                });
+            .fail(function (jqXHR, exception) {
+                // Our error logic here
+                var msg = '';
+                if (jqXHR.status === 0) {
+                    msg = 'Not connect.\n Verify Network.';
+                } else if (jqXHR.status == 404) {
+                    msg = 'Requested page not found. [404]';
+                } else if (jqXHR.status == 500) {
+                    msg = 'Internal Server Error [500].';
+                } else if (exception === 'parsererror') {
+                    msg = 'Requested JSON parse failed.';
+                } else if (exception === 'timeout') {
+                    msg = 'Time out error.';
+                } else if (exception === 'abort') {
+                    msg = 'Ajax request aborted.';
+                } else {
+                    msg = 'Uncaught Error.\n' + jqXHR.responseText;
+                }
+                alert(msg);
+            });
 
         event.preventDefault();
-    })
+    });
 });
 
+function reformatDate(dateStr) {
+    let a = dateStr.split('-');
+    return a[2]+'/'+a[1] +'/' +a[0];
+}
 
 //Check if prices are not Numbers
 function validate(formData) {
