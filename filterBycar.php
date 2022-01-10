@@ -10,8 +10,8 @@ $color = $_POST['color'];
 $model = $_POST['model'];
 $status = $_POST['status'];
 $louza = $_POST['louza'];
-$start =$_POST['date1'];
-$end =$_POST['date2'];
+$start =$_POST['start'];
+$end =$_POST['end'];
 
 
 if(!empty($start)&& !empty($end)){
