@@ -8,7 +8,7 @@ $(document).ready(function () {
         });
     });
 
-    $("#filter-form").submit(function (event) {
+    $("#mm").click(function (event) {
         $(".help-block").remove();
         const formData = {
             Fname: $("#Fname").val(),
@@ -30,6 +30,9 @@ $(document).ready(function () {
         })
             .done(function (data) {
                 console.log(data);
+                var newdata = [];
+                newdata.push(data);
+               
                 $('#infoTable').bootstrapTable({
                     toggle: true,
                     pagination: true,
@@ -61,7 +64,10 @@ $(document).ready(function () {
                     }
                     ],
                     data: data
+                    
                 });
+               
+
             })
             .fail(function (jqXHR, exception) {
                 console.log("Fail");

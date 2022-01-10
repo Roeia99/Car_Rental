@@ -6,9 +6,9 @@ $(document).ready(function () {
     // console.log(document.getElementById("price_day").text());
     //
     d = PickupDate.split("/")
-    var d1 = new Date(d[2], d[1], d[0], 0, 0, 0, 0);
+    var d1 = new Date(d[2], d[1], d[0], 11, 0, 0, 0);
     o = ReturnDate.split("/");
-    var d2 = new Date(o[2], o[1], o[0], 0, 0, 0, 0);
+    var d2 = new Date(o[2], o[1], o[0],11, 0, 0, 0);
     console.log(d2);
     var diff = d2.getTime() - d1.getTime();
     var daydiff = diff / (1000 * 60 * 60 * 24);
