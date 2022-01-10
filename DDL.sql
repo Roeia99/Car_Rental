@@ -36,9 +36,9 @@ CREATE Table reservation
     res_id      int AUTO_INCREMENT UNIQUE,
     customer_id INT,
     car_id      VARCHAR(10),
-    res_date    DATETIME DEFAULT CURRENT_TIMESTAMP,
-    pick_date   DATETIME NOT NULL,
-    return_date DATETIME NOT NULL,
+    res_date    DATE DEFAULT CURRENT_TIMESTAMP,
+    pick_date   DATE NOT NULL,
+    return_date DATE NOT NULL,
     duration    INT AS (timestampdiff (day, pick_date, return_date)),
     PRIMARY KEY (res_id, customer_id, car_id)
 );
