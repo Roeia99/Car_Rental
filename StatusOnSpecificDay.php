@@ -1,18 +1,28 @@
 <?php
 
 $data = [];
+$errors=[];
 $i = 0;
 
 
 $date = $_POST['s'];
+if (!empty($date)) {
 
+    if ($string != "") {
+        $string = $string . "AND  ";
+    }
+    $string = $string . "date = '" . $date . "'";
 
-$connection = mysqli_connect('localhost','root','','car_rental_system');
+}
 
-$sql = "SELECT * FROM car_status WHERE `date` = '".$date."'";
+if ($string != "") {
+    $string = "WHERE " . $string;
+}
 
-$query = mysqli_query($connection,$sql);
-$num_rows = mysqli_num_rows($query);
+$connection = mysqli_connect('localhost', 'root', '', 'car_rental_system');
+
+$query = mysqli_query($connection, "SELECT * FROM car_status ");
+$num_rows = mysqli_num_rows($query);;
 
 if($num_rows!=0)
 {

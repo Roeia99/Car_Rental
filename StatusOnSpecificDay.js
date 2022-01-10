@@ -14,7 +14,6 @@ $(document).ready(function () {
             s:$("#date").val()
         };
         
-        console.log(formData);
         $.ajax({
             type: "POST",
             url: 'SearchByCustomer.php',
@@ -24,7 +23,6 @@ $(document).ready(function () {
         })
             .done(function (data) {
                 console.log(data);
-                
                
                 $('#infoTable').bootstrapTable({
                     toggle: true,
