@@ -8,30 +8,21 @@ $(document).ready(function () {
         });
     });
 
-    $("#mm").click(function (event) {
+    $("#search").click(function (event) {
         $(".help-block").remove();
-        const formData = {
-            Fname: $("#Fname").val(),
-            Lname: $("#Lname").val(),
-            email: $("#email").val(),
-            phone: $("#phone").val(),
-            street: $("#street").val(),
-            city: $("#city").val(),
-            country: $("#country").val(),
+        $sdata={
+            s:$("#date").val()
         };
-
-        console.log(formData);
+        
         $.ajax({
             type: "POST",
             url: 'SearchByCustomer.php',
-            data: formData,
+            data: $sdata,
             dataType: "json",
             encode: true,
         })
             .done(function (data) {
                 console.log(data);
-                var newdata = [];
-                newdata.push(data);
                
                 $('#infoTable').bootstrapTable({
                     toggle: true,
@@ -41,26 +32,14 @@ $(document).ready(function () {
                     clickToSelect: true,
                     columns: [{
                         field: 'id',
-                        title: 'Customer ID',
+                        title: 'CAR_ID',
                         sortable: true
                     }, {
-                        field: 'fn',
-                        title: 'First Name'
+                        field: 'status',
+                        title: 'STATUS'
                     }, {
-                        field: 'ln',
-                        title: 'Last Name'
-                    }, {
-                        field: 'ci',
-                        title: 'Plate ID'
-                    }, {
-                        field: 'm',
-                        title: 'model'
-                    }, {
-                        field: 'pd',
-                        title: 'pay_date'
-                    }, {
-                        field: 'tp',
-                        title: 'Payment'
+                        field: 'date',
+                        title: 'DATE'
                     }
                     ],
                     data: data

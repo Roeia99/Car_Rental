@@ -18,7 +18,6 @@
 
         $sql ="INSERT INTO reservation(customer_id,car_id,pick_date,return_date) 
                 VALUES ('".$customer_id."','".$car_id."','".$pickupDate."','".$returnDate."')" ;
-
     $result = mysqli_query($connection, $sql);
     if ($result) {
         $data['success'] = true;

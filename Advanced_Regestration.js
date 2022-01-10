@@ -8,31 +8,22 @@ $(document).ready(function () {
         });
     });
 
-    $("#mm").click(function (event) {
+    $("#filter-form").submit(function (event) {
         $(".help-block").remove();
         const formData = {
-            Fname: $("#Fname").val(),
-            Lname: $("#Lname").val(),
-            email: $("#email").val(),
-            phone: $("#phone").val(),
-            street: $("#street").val(),
-            city: $("#city").val(),
-            country: $("#country").val(),
+            Rday: $("#Rday").val(),
         };
 
         console.log(formData);
         $.ajax({
             type: "POST",
-            url: 'SearchByCustomer.php',
+            url: 'Advanced_Regestration.php',
             data: formData,
             dataType: "json",
             encode: true,
         })
             .done(function (data) {
                 console.log(data);
-                var newdata = [];
-                newdata.push(data);
-               
                 $('#infoTable').bootstrapTable({
                     toggle: true,
                     pagination: true,
@@ -41,33 +32,30 @@ $(document).ready(function () {
                     clickToSelect: true,
                     columns: [{
                         field: 'id',
-                        title: 'Customer ID',
+                        title: 'Reservation ID',
                         sortable: true
                     }, {
-                        field: 'fn',
-                        title: 'First Name'
+                        field: 'cs',
+                        title: 'Customer ID'
                     }, {
-                        field: 'ln',
-                        title: 'Last Name'
+                        field: 'cr',
+                        title: 'Car ID'
                     }, {
-                        field: 'ci',
-                        title: 'Plate ID'
+                        field: 'rd',
+                        title: 'Reservation Date'
                     }, {
-                        field: 'm',
-                        title: 'model'
+                        field: 'p',
+                        title: 'Pick up Date'
                     }, {
-                        field: 'pd',
-                        title: 'pay_date'
+                        field: 'r',
+                        title: 'Return Date'
                     }, {
-                        field: 'tp',
-                        title: 'Payment'
+                        field: 'd',
+                        title: 'Duration'
                     }
                     ],
                     data: data
-                    
                 });
-               
-
             })
             .fail(function (jqXHR, exception) {
                 console.log("Fail");

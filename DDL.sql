@@ -36,9 +36,9 @@ CREATE Table reservation
     res_id      int AUTO_INCREMENT UNIQUE,
     customer_id INT,
     car_id      VARCHAR(10),
-    res_date    DATETIME DEFAULT CURRENT_TIMESTAMP,
-    pick_date   DATETIME NOT NULL,
-    return_date DATETIME NOT NULL,
+    res_date    DATE DEFAULT CURRENT_TIMESTAMP,
+    pick_date   DATE NOT NULL,
+    return_date DATE NOT NULL,
     duration    INT AS (timestampdiff (day, pick_date, return_date)),
     PRIMARY KEY (res_id, customer_id, car_id)
 );
@@ -76,8 +76,7 @@ ALTER TABLE payment
 ALTER TABLE car_status
     ADD FOREIGN KEY (car_id) REFERENCES car (car_id) ON DELETE CASCADE ON UPDATE CASCADE;
 
-ALTER TABLE car_status
-    ADD FOREIGN KEY (status) REFERENCES car (status) ON DELETE CASCADE ON UPDATE CASCADE;
+
 
 CREATE VIEW report4 AS
 SELECT *
