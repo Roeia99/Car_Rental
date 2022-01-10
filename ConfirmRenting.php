@@ -1,4 +1,8 @@
-<!-- ---- Include the above in your HEAD tag -------- -->
+<?php
+session_start();
+if (!isset($_SESSION["PickupDate"]) || !isset($_SESSION["ReturnDate"]) || !isset($_SESSION["carId"]))
+    header("location:Renting.php");
+?>
 
 <!DOCTYPE html>
 <html>
