@@ -21,7 +21,6 @@ $(document).ready(function () {
     console.log(date2);
 
     var res_data = {
-        customer_id : "1",
         car_id :$("#carId").text(),
         PickupDate:date1,
         ReturnDate:date2
@@ -83,18 +82,17 @@ $(document).ready(function () {
 });
 
 //Check if the date is valid
-function validatedate(dateString) {
-    let dateformat = /^(0?[1-9]|1[0-2])[\/](0?[1-9]|[1-2][0-9]|3[01])[\/]\d{4}$/;
+function validateDate(dateString) {
+    let dateformat = /^(?:(?:31(\/|-|\.)(?:0?[13578]|1[02]))\1|(?:(?:29|30)(\/|-|\.)(?:0?[13-9]|1[0-2])\2))(?:(?:1[6-9]|[2-9]\d)?\d{2})$|^(?:29(\/|-|\.)0?2\3(?:(?:(?:1[6-9]|[2-9]\d)?(?:0[48]|[2468][048]|[13579][26])|(?:(?:16|[2468][048]|[3579][26])00))))$|^(?:0?[1-9]|1\d|2[0-8])(\/|-|\.)(?:(?:0?[1-9])|(?:1[0-2]))\4(?:(?:1[6-9]|[2-9]\d)?\d{2})$/;
 
     // Match the date format through regular expression
+    let datepart;
     if (dateString.match(dateformat)) {
-        let operator = dateString.split('/');
-
+        let operator = '/';
         // Extract the string into month, date and year
-        let datepart = [];
-        if (operator.length > 1) {
-            pdatepart = dateString.split('/');
-        }
+
+        datepart = dateString.split(operator);
+
         let month = parseInt(datepart[0]);
         let day = parseInt(datepart[1]);
         let year = parseInt(datepart[2]);
@@ -113,11 +111,10 @@ function validatedate(dateString) {
             }
             if ((leapYear == false) && (day >= 29)) {
                 return false;
-            } else
-                if ((leapYear == true) && (day > 29)) {
-                    alert('Invalid date format!');
-                    return false;
-                }
+            } else if ((leapYear == true) && (day > 29)) {
+                alert('Invalid date format!');
+                return false;
+            }
         }
     } else {
         alert("Invalid date format!");

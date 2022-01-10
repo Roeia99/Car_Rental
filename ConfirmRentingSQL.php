@@ -1,8 +1,8 @@
 <?php
     $data = [];
     $errors = [];
-
-    $customer_id = $_POST['customer_id'];
+    session_start();
+    $customer_id = $_SESSION['customer_id'];
     $car_id = $_POST['car_id'];
     $pickupDate = $_POST['PickupDate'];
     $returnDate = $_POST['ReturnDate'];
