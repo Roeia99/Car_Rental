@@ -36,7 +36,7 @@ $(document).ready(function () {
                         sortable: true
                     }, {
                         field: 'status',
-                        title: 'STATUS'
+                        title: 'Active'
                     }, {
                         field: 'date',
                         title: 'DATE'
