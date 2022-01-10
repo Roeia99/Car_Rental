@@ -11,15 +11,19 @@ $(document).ready(function () {
     $("#filter-form").submit(function (event) {
         $(".help-block").remove();
         const formData = {
-            Sdate: $("#Sdate").val(),
-            Edate: $("#Edate").val(),
+            Fname: $("#Fname").val(),
+            Lname: $("#Lname").val(),
+            email: $("#email").val(),
+            phone: $("#phone").val(),
+            street: $("#street").val(),
+            city: $("#city").val(),
+            country: $("#country").val(),
         };
 
         console.log(formData);
-
         $.ajax({
             type: "POST",
-            url: 'SearchReservations.php',
+            url: 'Advanced_Customer.php',
             data: formData,
             dataType: "json",
             encode: true,
@@ -34,11 +38,8 @@ $(document).ready(function () {
                     clickToSelect: true,
                     columns: [{
                         field: 'id',
-                        title: 'Reservation ID',
+                        title: 'Customer ID',
                         sortable: true
-                    }, {
-                        field: 'cid',
-                        title: 'Customer ID'
                     }, {
                         field: 'fn',
                         title: 'First Name'
@@ -60,27 +61,6 @@ $(document).ready(function () {
                     }, {
                         field: 'ctr',
                         title: 'country'
-                    }, {
-                        field: 'cr',
-                        title: 'car_id'
-                    }, {
-                        field: 'm',
-                        title: 'Model'
-                    }, {
-                        field: 'y',
-                        title: 'Year'
-                    }, {
-                        field: 'c',
-                        title: 'Color'
-                    }, {
-                        field: 's',
-                        title: 'Status'
-                    }, {
-                        field: 'o',
-                        title: 'Office ID'
-                    }, {
-                        field: 'p',
-                        title: 'price/day'
                     }
                     ],
                     data: data
